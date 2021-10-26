@@ -69,15 +69,15 @@ $detalleventas = $detalles->GetDetalleVentasPorRUT($ventascliente);
             <?php
           
          
-          echo '<p>RUT: '.$datoscliente[0]['rut'].'</p>';
-          echo '<p>Nombre o Razon Social: '.$datoscliente[0]['nombre'].'</p>';
-                   echo '<p>Giro: '.$datoscliente[0]['giro'].'</p>';
-          echo '<p>Direccion: '.$datoscliente[0]['direccion'].'</p>';
-          echo '<p>Comuna: '.$comuna.'</p>';
-          echo '<p>Provincia: '.$provincia.'</p>';
-          echo '<p>Region: '.$region.'</p>';
-          echo '<p>Telefono: '.$datoscliente[0]['telefono'].'</p>';
-          echo '<p>Mail: '.$datoscliente[0]['mail'].'</p>';
+          echo '<p><strong>RUT</strong>: '.$datoscliente[0]['rut'].'</p>';
+          echo '<p><strong>Nombre o Razon Social</strong>: '.$datoscliente[0]['nombre'].'</p>';
+                   echo '<p><strong>Giro</strong>: '.$datoscliente[0]['giro'].'</p>';
+          echo '<p><strong>Direccion</strong>: '.$datoscliente[0]['direccion'].'</p>';
+          echo '<p><strong>Comuna</strong>: '.$comuna.'</p>';
+          echo '<p><strong>Provincia</strong>: '.$provincia.'</p>';
+          echo '<p><strong>Region</strong>: '.$region.'</p>';
+          echo '<p><strong>Telefono</strong>: '.$datoscliente[0]['telefono'].'</p>';
+          echo '<p><strong>Mail</strong>: '.$datoscliente[0]['mail'].'</p>';
 
           
          

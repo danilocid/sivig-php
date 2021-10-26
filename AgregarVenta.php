@@ -468,6 +468,9 @@ $articulos = $articulo->GetArticulos();
                     <button type="submit" class="btn btn-primary">Agregar cliente</button>
                   </div>
                 </div>
+                </div>
+                </div>
+                </div>
                 <!-- /.modal-content -->
             
               <!-- /.modal-dialog -->
@@ -475,10 +478,13 @@ $articulos = $articulo->GetArticulos();
                 
             <!-- Fin contenido -->
           
-       
-
+          </div>
+          </div>
          <!-- Default box -->
-     
+         </div>
+         </div>
+      </section>
+</div>
   
   <?php
   

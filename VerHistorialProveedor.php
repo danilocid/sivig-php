@@ -64,15 +64,15 @@ $detallerecepciones = $recepciones->GetDetalleRecepcionesPorRUT($recepcionesprov
             <?php
           
          
-          echo '<p>RUT: '.$datosproveedor[0]['rut'].'</p>';
-          echo '<p>Nombre o Razon Social: '.$datosproveedor[0]['nombre'].'</p>';
-                   echo '<p>Giro: '.$datosproveedor[0]['giro'].'</p>';
-          echo '<p>Direccion: '.$datosproveedor[0]['direccion'].'</p>';
-          echo '<p>Comuna: '.$comuna.'</p>';
-          echo '<p>Provincia: '.$provincia.'</p>';
-          echo '<p>Region: '.$region.'</p>';
-          echo '<p>Telefono: '.$datosproveedor[0]['telefono'].'</p>';
-          echo '<p>Mail: '.$datosproveedor[0]['mail'].'</p>';
+          echo '<p><strong>RUT</strong>: '.$datosproveedor[0]['rut'].'</p>';
+          echo '<p><strong>Nombre o Razon Social</strong>: '.$datosproveedor[0]['nombre'].'</p>';
+                   echo '<p><strong>Giro</strong>: '.$datosproveedor[0]['giro'].'</p>';
+          echo '<p><strong>Direccion</strong>: '.$datosproveedor[0]['direccion'].'</p>';
+          echo '<p><strong>Comuna</strong>: '.$comuna.'</p>';
+          echo '<p><strong>Provincia</strong>: '.$provincia.'</p>';
+          echo '<p><strong>Region</strong>: '.$region.'</p>';
+          echo '<p><strong>Telefono</strong>: '.$datosproveedor[0]['telefono'].'</p>';
+          echo '<p><strong>Mail</strong>: '.$datosproveedor[0]['mail'].'</p>';
 
           
          
@@ -175,7 +175,7 @@ $detallerecepciones = $recepciones->GetDetalleRecepcionesPorRUT($recepcionesprov
 
         <div class="card">
           <div class="card-header">
-            <h3 class="card-title">Articulos comprados por el cliente</h3>
+            <h3 class="card-title">Articulos comprados al proveedor</h3>
   
             <div class="card-tools">
               <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Collapse">
@@ -247,7 +247,7 @@ $detallerecepciones = $recepciones->GetDetalleRecepcionesPorRUT($recepcionesprov
           </div>
           <!-- /.card-body -->
           <div class="card-footer">
-          Articulos comprados por el cliente
+          Articulos comprados al proveedor
           </div>
           <!-- /.card-footer-->
         </div>

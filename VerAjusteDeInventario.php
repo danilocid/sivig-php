@@ -53,14 +53,14 @@ $detalleajsute = $ajustes->GetDetalleAjustePorId($_POST['id']);
             
             <?php
           
-        echo '<p>Tipo ajuste: '.$tipos->GetTiposMovimientosId($ajuste[0][1]).'</p>';
-        echo '<p>Observaciones: '.$ajuste[0][4].'</p>';        
-        echo '<p>Monto neto: $' .number_format($ajuste[0][2], 0, ',', '.').'</p>';
-        echo '<p>Monto impuestos: $' .number_format($ajuste[0][3], 0, ',', '.').'</p>';
-        echo '<p>Monto total: $' .number_format($ajuste[0][3] + $ajuste[0][2], 0, ',', '.').'</p>';
-        echo '<p>Fecha de ajuste: ' .$ajuste[0][5].'</p>';
+        echo '<p><strong>Tipo ajuste</strong>: '.$tipos->GetTiposMovimientosId($ajuste[0][1]).'</p>';
+        echo '<p><strong>Observaciones</strong>: '.$ajuste[0][4].'</p>';        
+        echo '<p><strong>Monto neto</strong>: $' .number_format($ajuste[0][2], 0, ',', '.').'</p>';
+        echo '<p><strong>Monto impuestos</strong>: $' .number_format($ajuste[0][3], 0, ',', '.').'</p>';
+        echo '<p><strong>Monto total</strong>: $' .number_format($ajuste[0][3] + $ajuste[0][2], 0, ',', '.').'</p>';
+        echo '<p><strong>Fecha de ajuste</strong>: ' .$ajuste[0][5].'</p>';
         $usuario = $usuarios->GetUsuarioPorId($ajuste[0][6]);
-        echo '<p>Usuario: ' .$usuario[0]['Nombre'].' '.$usuario[0]['Apellidos'].'</p>';
+        echo '<p><strong>Usuario</strong>: ' .$usuario[0]['Nombre'].' '.$usuario[0]['Apellidos'].'</p>';
      
       
       ?>

@@ -113,7 +113,7 @@ include 'Controller/ArticulosController.php';
                     }
               }
               ?>
-    
+          </div>
     <button type="button" class="btn btn-primary pull-left" data-toggle="modal" data-target="#modal">Editar articulo</button>
     <div class="modal fade" id="modal">
       <div class="modal-dialog">

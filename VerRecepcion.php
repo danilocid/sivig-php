@@ -58,16 +58,16 @@ $detallesrecepcion = $detallerecepcion->GetDetalleRecepcionPorId($recepcion[0]['
             <?php
           
          
-          echo '<p>Proveedor: '.$proveedores->GetNombreProveedorPorRut($recepcion[0]['proveedor']).'</p>';
-          echo '<p>Documento: '.$tipos->GetTiposDocumentosPorId($recepcion[0]['tipo_documento']).' N°: '.$recepcion[0]['documento'].'</p>';
-          echo '<p>Monto neto: $' .number_format($recepcion[0]['total_neto'], 0, ',', '.').'</p>';
-          echo '<p>Monto I.V.A.: $' .number_format($recepcion[0]['total_imp'], 0, ',', '.').'</p>';
-          echo '<p>Monto total: $' .number_format($recepcion[0]['total_neto'] + $recepcion[0]['total_imp'], 0, ',', '.').'</p>';
-          echo '<p>Total articulos: ' .number_format($recepcion[0]['unidades_total'], 0, ',', '.').'</p>';
-          echo '<p>Observaciones: ' .$recepcion[0]['observaciones'].'</p>';
-          echo '<p>Fecha de recepcion: ' .$recepcion[0]['fecha'].'</p>';
+          echo '<p><strong>Proveedor</strong>: '.$proveedores->GetNombreProveedorPorRut($recepcion[0]['proveedor']).'</p>';
+          echo '<p><strong>Documento</strong>: '.$tipos->GetTiposDocumentosPorId($recepcion[0]['tipo_documento']).' N°: '.$recepcion[0]['documento'].'</p>';
+          echo '<p><strong>Monto neto</strong>: $' .number_format($recepcion[0]['total_neto'], 0, ',', '.').'</p>';
+          echo '<p><strong>Monto I.V.A.</strong>: $' .number_format($recepcion[0]['total_imp'], 0, ',', '.').'</p>';
+          echo '<p><strong>Monto total</strong>: $' .number_format($recepcion[0]['total_neto'] + $recepcion[0]['total_imp'], 0, ',', '.').'</p>';
+          echo '<p><strong>Total articulos</strong>: ' .number_format($recepcion[0]['unidades_total'], 0, ',', '.').'</p>';
+          echo '<p><strong>Observaciones</strong>: ' .$recepcion[0]['observaciones'].'</p>';
+          echo '<p><strong>Fecha de recepcion</strong>: ' .$recepcion[0]['fecha'].'</p>';
           $usuario = $usuarios->GetUsuarioPorId($recepcion[0]['usuario']);
-          echo '<p>Usuario: ' .$usuario[0]['Nombre'].' '.$usuario[0]['Apellidos'].'</p>';
+          echo '<p><strong>Usuario</strong>: ' .$usuario[0]['Nombre'].' '.$usuario[0]['Apellidos'].'</p>';
      
       
       ?>

@@ -46,7 +46,7 @@ include 'includes/partials/menu.php';
           </div>
           <!-- /.card-body -->
           <div class="card-footer">
-          Lineas de negocio
+          Inicio
           </div>
           <!-- /.card-footer-->
         </div>

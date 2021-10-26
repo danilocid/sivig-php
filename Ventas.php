@@ -121,11 +121,11 @@ if (isset($_SESSION['articulo'])) {
                 </div>
                 <!-- /.modal-content -->
               </div>
-            </div>
+          </div>
               <!-- /.card-body -->
           
           
-              </div>
+              
                 
            
           

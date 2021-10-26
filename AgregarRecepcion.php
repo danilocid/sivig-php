@@ -534,6 +534,14 @@ $articulos = $articulo->GetArticulos();
                 </div>
                 <!-- /.modal-content -->
                 </div>
+              </div>
+            </div>
+          </div>
+            </div>
+          </div>
+      </div>
+      </section>
+</div>
               <!-- /.modal-dialog -->
               
                 

@@ -54,20 +54,20 @@ $usuario = new Usuario();
             <?php
           
          
-          echo '<p>Id: '.$articulo[0]['id'].'</p>';
-          echo '<p>Codigo interno: '.$articulo[0]['cod_interno'].'</p>';
-          echo '<p>Codigo de barras: ' .$articulo[0]['cod_barras'].'</p>';
-          echo '<p>Descripcion: ' .$articulo[0]['descripcion'].'</p>';
-          echo '<p>Precio de compra neto: $' .number_format($articulo[0]['costo_neto'], 0, ',', '.').'</p>';
-          echo '<p>Precio de compra impuestos: $' .number_format($articulo[0]['costo_imp'], 0, ',', '.').'</p>';
-          echo '<p>Precio de venta neto: $' .number_format($articulo[0]['venta_neto'], 0, ',', '.').'</p>';
-          echo '<p>Precio de venta impuetos: $' .number_format($articulo[0]['venta_imp'], 0, ',', '.').'</p>';
-          echo '<p>Precio de venta total: $' .number_format(($articulo[0]['venta_neto'] + $articulo[0]['venta_imp']), 0, ',', '.').'</p>';
-          echo '<p>Stock: ' .number_format($articulo[0]['stock'], 0, ',', '.').'</p>';
+          echo '<p><strong>Id</strong>: '.$articulo[0]['id'].'</p>';
+          echo '<p><strong>Codigo interno</strong>: '.$articulo[0]['cod_interno'].'</p>';
+          echo '<p><strong>Codigo de barras</strong>: ' .$articulo[0]['cod_barras'].'</p>';
+          echo '<p><strong>Descripcion</strong>: ' .$articulo[0]['descripcion'].'</p>';
+          echo '<p><strong>Precio de compra neto</strong>: $' .number_format($articulo[0]['costo_neto'], 0, ',', '.').'</p>';
+          echo '<p><strong>Precio de compra impuestos</strong>: $' .number_format($articulo[0]['costo_imp'], 0, ',', '.').'</p>';
+          echo '<p><strong>Precio de venta neto</strong>: $' .number_format($articulo[0]['venta_neto'], 0, ',', '.').'</p>';
+          echo '<p><strong>Precio de venta impuestos</strong>: $' .number_format($articulo[0]['venta_imp'], 0, ',', '.').'</p>';
+          echo '<p><strong>Precio de venta total</strong>: $' .number_format(($articulo[0]['venta_neto'] + $articulo[0]['venta_imp']), 0, ',', '.').'</p>';
+          echo '<p><strong>Stock</strong>: ' .number_format($articulo[0]['stock'], 0, ',', '.').'</p>';
           if ($articulo[0]['activo']) {
-              echo '<p>Estado: Activo</p>';
+              echo '<p><strong>Estado</strong>: Activo</p>';
           } else {
-              echo '<p>Estado: Inactivo</p>';
+              echo '<p><strong>Estado</strong>: Inactivo</p>';
           }
          
         ?>

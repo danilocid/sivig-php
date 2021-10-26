@@ -155,7 +155,7 @@ include 'Controller/ProvinciasController.php';
                 </div>';
               }
               ?>
-           
+          </div>
                         
                         
                                
@@ -201,7 +201,9 @@ include 'Controller/ProvinciasController.php';
   
       </section>
       <!-- /.content -->
-    </div>
+</div>
+    
+    
     <!-- /.content-wrapper -->
 
   

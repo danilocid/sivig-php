@@ -143,9 +143,7 @@ Recepciones          </div>
             </div>
   
          
-                  <br>
-                  <br>
-                  <br>
+                  
                   
               
       
