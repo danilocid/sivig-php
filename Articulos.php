@@ -67,11 +67,26 @@ include 'Controller/ArticulosController.php';
       </div>';
       }
     }
+    if (isset($_GET['o'])) {
+      $articulo = new Articulos();
+      $articulos = $articulo->GetArticulos();
+      echo '<div class="float-left">
+      <a href="Articulos" class="btn  btn-md btn-info">ocultar articulos sin stock</a>
+      </div>';
+    }else{
+      $articulo = new Articulos();
+      $articulos = $articulo->GetArticulosSinStock();
+      echo '<div class="float-left">
+      <a href="Articulos?o=1" class="btn  btn-md btn-info">mostrar articulos sin stock</a>
+      </div>';
+    }
+
     
     ?>
             <!-- Inicio contenido -->
             
             
+            <br>
             <table id="tabla1" class="table table-bordered table-striped">
               <thead>
                 <tr>
@@ -86,8 +101,8 @@ include 'Controller/ArticulosController.php';
               </thead>
               <tbody>
               <?php
-              $articulo = new Articulos();
-              $articulos = $articulo->GetArticulos();
+              //$articulo = new Articulos();
+              //$articulos = $articulo->GetArticulos();
             
               foreach ($articulos as $c) {
                 

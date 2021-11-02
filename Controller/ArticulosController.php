@@ -13,6 +13,18 @@ Class Articulos extends DB{
         }
         return $arrayarticulos;
     }
+    public function GetArticulosSinStock(){
+        $query = $this->connect()->prepare('SELECT * FROM articulos WHERE stock != 0');
+        $query->execute();
+        $arrayarticulos = array();
+        
+        foreach ($query as $a) {
+            
+
+            array_push($arrayarticulos, $a);
+        }
+        return $arrayarticulos;
+    }
 
     public function AgregarArticulos($articulos, $enlace){
         $query = $this->connect()->prepare('SELECT * FROM articulos WHERE cod_interno = :cod_interno OR cod_barras = :cod_barras');

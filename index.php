@@ -25,7 +25,7 @@ include 'includes/partials/menu.php';
         <!-- Default box -->
         <div class="card">
           <div class="card-header">
-            <h3 class="card-title">Inicio</h3>
+            <h3 class="card-title">Accesos directos</h3>
   
             <div class="card-tools">
               <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Collapse">
@@ -39,14 +39,17 @@ include 'includes/partials/menu.php';
             <!-- Inicio contenido -->
             
             
-			<p>Aqui va el contenido</p>
+            <a href="AgregarVenta" class="btn  btn-lg btn-info"> Agregar venta</a>
+            <a href="Clientes" class="btn  btn-lg btn-info"> Clientes</a>
+            <a href="Proveedores" class="btn  btn-lg btn-info"> Proveedores</a>
+            <a href="AgregarRecepcion" class="btn  btn-lg btn-info"> Agregar recepcion</a>
                 
                 
             <!-- Fin contenido -->
           </div>
           <!-- /.card-body -->
           <div class="card-footer">
-          Inicio
+          Accesos directos
           </div>
           <!-- /.card-footer-->
         </div>

@@ -2,6 +2,18 @@
 include 'Model/dbConection.php';
 include 'Controller/ArticulosController.php';
 $arrayarticulos = array();
+class Articulo{
+    public $cod_interno;
+    public $cod_barras;
+    public $descripcion;
+    public $costo_neto;
+    public $costo_imp;
+    public $venta_neto;
+    public $venta_imp;
+    public $stock;
+    public $activo;
+
+}
 
 $articulos = new Articulo();
 $articulos->id = $_POST['id'];
