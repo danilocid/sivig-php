@@ -4,7 +4,7 @@
 // Exemple de génération de devis/facture PDF
 include 'Model/dbConection.php';
 
-$id = 3;
+$id = 14;
 if (isset($_GET['id'])) {
     $id = $_GET['id'];
 }
@@ -26,75 +26,241 @@ $recepcion = $recepciones->GetRecepcionesPorId($id);
 
 $detallerecepcion = new DetallesRecepciones();
 $detallesrecepcion = $detallerecepcion->GetDetalleRecepcionPorId($id);
-
-require('PDF/DetallePDF.php');
-//se llama el constructor
-$pdf = new PDF_Invoice( 'P', 'mm', 'Letter' );
-//Se agrega una pagina
-$pdf->AddPage();
-//se agregan los datos de la empresa
-$pdf->AddEmpresa( "Llamativo.cl",
-                  "Cid y Badilla Limitada\n" .
-                  "76.341.652-6\n".
-                  "Avenida Cayumanqui 685, local 6\n" .
-                  "Quillon");
-//Se agrega el tipo y numero de documento
-$pdf->AddDocumento( $tipos->GetTiposDocumentosPorId($recepcion[0]['tipo_documento']), $recepcion[0]['documento'] );
-//Se agregan los dato del proveedor
-
-$pdf->AddCliente($proveedores->GetNombreProveedorPorRut($recepcion[0]['proveedor']), 'Monto total: $' .number_format($recepcion[0]['total_neto'] + $recepcion[0]['total_imp'], 0, ',', '.'),
-'Total articulos: ' .number_format($recepcion[0]['unidades_total'], 0, ',', '.'), 'Observaciones: ' .$recepcion[0]['observaciones']);
-
-
-//Se agrega la fecha de venta
-$pdf->addFechaVenta($recepcion[0]['fecha']);
-//se agrega el usuario que realiza la venta
+$originalDate = $recepcion[0]['fecha'];
+$newDate = date("d/m/Y", strtotime($originalDate));
 $usuario = $usuarios->GetUsuarioPorId($recepcion[0]['usuario']);
-$pdf->addUsuarioVenta($usuario[0]['Nombre'].' '.$usuario[0]['Apellidos']);
-//Se agregan las columnas y su alineacion
-$cols=array("N"    => 8, 
-            "CODIGO"    => 21,
-             "DESCRIPCION"  => 74,
-             "CANTIDAD"     => 19,
-             "COSTO"      => 25,
-             "NETO" => 15,
-             "IVA" => 15,
-             "TOTAL"          => 19 );
-$pdf->addCols( $cols);
-$cols=array( "N"    => "L",
-             "CODIGO"    => "L",
-             "DESCRIPCION"  => "L",
-             "CANTIDAD"     => "C",
-             "COSTO"      => "R",
-             "NETO" => "R",
-             "IVA" => "R",
-             "TOTAL"          => "C" );
-$pdf->addLineFormat( $cols);
-$pdf->addLineFormat($cols);
-//posicion donde comienza el detalle
-$y    = 80;
-//se agregan los datos a la tabla
-$contador = 1;
-foreach ($detallesrecepcion as $a) {
-    $line = array("N"    => $contador,
-                "CODIGO"    => $a['articulo'],
-               "DESCRIPCION"  => $articulos->GetDescripcionArticuloPorId($a['articulo']),
-               "CANTIDAD"     => $a['cantidad'],
-               "COSTO"      => '$'.number_format($a['compra_neto'] + $a['compra_imp'], 0, ',', '.'),
-               "NETO" => '$'.number_format($a['compra_neto'], 0, ',', '.'),
-               "IVA" => '$'.number_format(($a['compra_imp']), 0, ',', '.'),
-               "TOTAL"          => "$".number_format(($a['compra_imp'] + $a['compra_neto']) * $a['cantidad'], 0, ',', '.') );
-$size = $pdf->addLine( $y, $line );
-$y   += $size + 2;
-$contador++;
-}
+
+
+ob_start();
+
+?>
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>SIVIG - Ver venta</title>
+
+    <style>
+        .invoice-box {
+            max-width: 800px;
+            margin: auto;
+            padding: 30px;
+            border: 1px solid #eee;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
+            font-size: 15px;
+            line-height: 24px;
+            font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif;
+            color: #555;
+        }
+
+        .invoice-box table {
+            width: 100%;
+            line-height: inherit;
+            text-align: left;
+        }
+
+        .invoice-box table td {
+            padding: 5px;
+            vertical-align: top;
+        }
+
+        .invoice-box table tr td:nth-child(4) {
+            text-align: right;
+
+        }
+
+        .invoice-box table tr.top table td {
+            padding-bottom: 20px;
+        }
+
+        .invoice-box table tr.top table td.title {
+            font-size: 45px;
+            line-height: 45px;
+            color: #333;
+
+        }
+
+        .invoice-box table tr.information table td {
+            padding-bottom: 40px;
+        }
+
+        .invoice-box table tr.heading td {
+            background: #eee;
+            border: 1px solid #ddd;
+            font-weight: bold;
+        }
+
+        .invoice-box table tr.details td {
+            padding-bottom: 20px;
+        }
+
+        .datos {
+            border: 1.5px solid #eee;
+        }
+
+        .invoice-box table tr.item.last td {
+            border-bottom: none;
+        }
+
+        .invoice-box table tr.total td:nth-child(4) {
+
+            border: 2px solid #eee;
+            font-weight: bold;
+        }
+
+        @media only screen and (max-width: 600px) {
+            .invoice-box table tr.top table td {
+                width: 100%;
+                display: block;
+                text-align: right;
+            }
+
+            .invoice-box table tr.information table td {
+                width: 100%;
+                display: block;
+                text-align: center;
+            }
+        }
+
+        /** RTL **/
+        .invoice-box.rtl {
+            direction: rtl;
+            font-family: Tahoma, 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif;
+        }
+
+        .invoice-box.rtl table {
+            text-align: right;
+        }
+
+        .invoice-box.rtl table tr td:nth-child(2) {
+            text-align: left;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="invoice-box">
+        <table cellpadding="0" cellspacing="0">
+            <tr class="top">
+                <td>
+                    <table>
+                        <tr>
+                            <td class="title">
+                                <img src="http://sivig.multitiendallamativo.cl/images/Logo%20web%202.png" style="width: 100%; max-width: 150px" />
+                            </td>
+
+                            <td class="datos" style="text-align: right;">
+
+                                <strong>Cid y Badilla Limitada</strong><br />
+                                76341652-6<br />
+                                Quillon
+
+                            </td>
+
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+        </table>
+        <br />
+        <table cellpadding="0" cellspacing="0">
+            <tr class="information">
+                <td colspan="3">
+                    <table>
+                                 <td >
+                                Proveedor: <?php echo $proveedores->GetNombreProveedorPorRut($recepcion[0]['proveedor']); ?> <br />
+								<?php echo $tipos->GetTiposDocumentosPorId($recepcion[0]['tipo_documento']) . ' :'. $recepcion[0]['documento']; ?><br />
+								Fecha de ingreso: <?php echo $newDate;?><br />
+								Usuario: <?php echo $usuario[0]['Nombre'].' '.$usuario[0]['Apellidos'];?>
+								</td>
+								<td></td>
+								<td>
+                                Monto total: $ <?php echo number_format($recepcion[0]['total_neto'] + $recepcion[0]['total_imp'], 0, ',', '.');?><br />
+								Total articulos: <?php echo number_format($recepcion[0]['unidades_total'], 0, ',', '.');?><br />
+                                Observaciones: <?php echo $recepcion[0]['observaciones']; ?>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+        </table>
+        <table cellpadding="0" cellspacing="0">
+
+
+            <tr class="heading">
+                <td>Item</td>
+                <td>Cantidad</td>
+                <td>Unitario</td>
+                <td>Total</td>
+            </tr>
+            <?php
+            $total_ventas_neto = 0;
+            $total_ventas_imp = 0;
+            foreach ($detallesrecepcion as $d) {
+                    echo '<tr class="datos">
+                    <td class="datos">' . $articulos->GetDescripcionArticuloPorId($d['articulo']) . '</td>
+                    <td class="datos">' . $d['cantidad']  . '</td>
+                    <td class="datos">$ ' . number_format(($d['compra_neto'] + $d['compra_imp']), 0, ',', '.') . '</td>
+            	        <td class="datos">$ ' . number_format(($d['compra_neto'] + $d['compra_imp']) * $d['cantidad'] , 0, ',', '.') . '</td>
+						
+					</tr>';
+                $total_ventas_neto = $total_ventas_neto + ($d['compra_neto'] * $d['cantidad']);
+                $total_ventas_imp = $total_ventas_imp + ($d['compra_imp'] * $d['cantidad']);
+            } ?>
 
 
 
+            <tr class="total">
+
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>Total NETO: <?php echo '$' . number_format($total_ventas_neto, 0, ',', '.'); ?></td>
+            </tr>
+            <tr class="total">
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>I.V.A.: <?php echo '$' . number_format($total_ventas_imp, 0, ',', '.'); ?></td>
+            </tr>
+            <tr class="total">
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>Total: <?php echo '$' . number_format($total_ventas_imp + $total_ventas_neto, 0, ',', '.'); ?></td>
+            </tr>
+        </table>
+    </div>
+</body>
+
+</html>
 
 
-$pdf->addImpuestos('$'.number_format($recepcion[0]['total_neto']/1.19, 0, ',', '.'), 
-'$'.number_format(($recepcion[0]['total_imp']), 0, ',', '.'), 
-'$'.number_format($recepcion[0]['total_neto'] + $recepcion[0]['total_imp'], 0, ',', '.'));
-$pdf->Output("I", "detalle_venta.pdf", true);
+<?php
+
+$html = ob_get_clean();
+//echo $html;
+require_once 'PDF/dompdf/autoload.inc.php';
+// reference the Dompdf namespace
+use Dompdf\Dompdf;
+
+// instantiate and use the dompdf class
+$dompdf = new Dompdf();
+$optins = $dompdf->getOptions();
+$optins->set(array('isRemoteEnabled' => true));
+$dompdf->setOptions($optins);
+
+
+$dompdf->loadHtml($html);
+
+// (Optional) Setup the paper size and orientation
+$dompdf->setPaper('letter', 'portrait');
+
+// Render the HTML as PDF
+$dompdf->render();
+
+// Output the generated PDF to Browser
+$dompdf->stream("verventa.pdf", array("Attachment" => false));
+
+
 ?>

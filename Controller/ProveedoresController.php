@@ -47,7 +47,7 @@ Class Proveedores extends DB{
                     'mail' => $proveedor[0]->mail
                 ]);
                 echo '<script type="text/javascript">
-                    window.location="proveedores?m=2";
+                    window.location="Proveedores?m=2";
                   </script>';
             } catch (PDOException $e) {
                 print_r('Error conenection: ' . $e->getCode());
@@ -109,7 +109,7 @@ Class Proveedores extends DB{
                     'mail' => $proveedor[0]->mail
             ]);
             echo '<script type="text/javascript">
-                window.location="proveedores?m=3";
+                window.location="Proveedores?m=3";
               </script>';
         } catch (PDOException $e) {
             print_r('Error conenection: ' . $e->getMessage());

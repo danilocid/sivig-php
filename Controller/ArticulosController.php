@@ -25,7 +25,6 @@ Class Articulos extends DB{
         }
         return $arrayarticulos;
     }
-
     public function AgregarArticulos($articulos, $enlace){
         $query = $this->connect()->prepare('SELECT * FROM articulos WHERE cod_interno = :cod_interno OR cod_barras = :cod_barras');
         $query->execute(['cod_interno' => $articulos[0]->cod_interno, 'cod_barras' => $articulos[0]->cod_barras]);
@@ -90,7 +89,6 @@ Class Articulos extends DB{
         }
         return $precio;
     }
-
     public function EditarArticulo($articulo){
         try {
             $query = $this->connect()->prepare('UPDATE articulos SET cod_interno = :cod_interno, cod_barras = :cod_barras,
@@ -129,11 +127,11 @@ Class Articulos extends DB{
         'stock' => $stock,
         'costo_neto' => $costo_neto,
         'costo_imp' => $costo_imp]);
-    }catch (PDOException $e) {
-        echo 'error al actualizar el stock del articulo';
-        print_r('Error conenection: ' . $e->getMessage());
-       
-    }
+        }catch (PDOException $e) {
+            echo 'error al actualizar el stock del articulo';
+            print_r('Error conenection: ' . $e->getMessage());
+        
+        }
     }
     public function UpdateStockArticuloVentaPorId($id, $cantidad){
         try{
@@ -150,13 +148,10 @@ Class Articulos extends DB{
         $query->execute(['id' => $id,
         'stock' => $stock
         ]);
-    }catch (PDOException $e) {
-        echo 'error al actualizar el stock del articulo';
-        print_r('Error conenection: ' . $e->getMessage());
-       
-    }
+        }catch (PDOException $e) {
+            echo 'error al actualizar el stock del articulo';
+            print_r('Error conenection: ' . $e->getMessage());
+        
+        }
     }
 }
-
-
-?>

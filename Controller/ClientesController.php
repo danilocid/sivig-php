@@ -64,7 +64,7 @@ Class Cliente extends DB{
             }
         }
     }
-        public function GetClientesPorRUT($rut){
+    public function GetClientesPorRUT($rut){
             $query = $this->connect()->prepare('SELECT * FROM clientes WHERE rut = :rut');
             $query->execute(['rut' =>$rut]);
             $arrayclientes = array();
