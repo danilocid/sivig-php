@@ -8,7 +8,7 @@ toc: true
 
 ## Examples
 
-Bootstrap includes several predefined button styles, each serving its own semantic purpose, with a few extras thrown in for more control.
+Bootstrap Includes several predefined button styles, each serving its own semantic purpose, with a few extras thrown in for more control.
 
 {% capture example %}
 {% for color in site.data.theme-colors %}

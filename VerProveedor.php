@@ -1,8 +1,8 @@
 <?php
 $titulo = 'Ver proveedor';
 $idpagina = 2;
-include 'includes/partials/header.php';
-include 'includes/partials/menu.php';
+include 'Includes/partials/header.php';
+include 'Includes/partials/menu.php';
 include 'Controller/ProveedoresController.php';
 include 'Controller/ComunasController.php';
 include 'Controller/RegionesController.php';
@@ -184,6 +184,6 @@ include 'Controller/RegionesController.php';
 
 <?php
 
-include 'includes/partials/footer.php';
+include 'Includes/partials/footer.php';
 
 ?>

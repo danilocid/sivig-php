@@ -1,8 +1,8 @@
 <?php
 $titulo = 'Editar permisos - SIVIG';
 $idpagina = 1;
-include 'includes/partials/header.php';
-include 'includes/partials/menu.php';
+include 'Includes/partials/header.php';
+include 'Includes/partials/menu.php';
 include 'Controller/PermisosController.php';
 
         $id = $_POST["id"];
@@ -128,6 +128,6 @@ include 'Controller/PermisosController.php';
 
 
   <?php
-  include 'includes/partials/footer.php';
+  include 'Includes/partials/footer.php';
   ?>
 

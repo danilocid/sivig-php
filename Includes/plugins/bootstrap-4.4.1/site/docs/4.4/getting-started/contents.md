@@ -42,7 +42,7 @@ This is the most basic form of Bootstrap: precompiled files for quick drop-in us
 
 ## CSS files
 
-Bootstrap includes a handful of options for including some or all of our compiled CSS.
+Bootstrap Includes a handful of options for including some or all of our compiled CSS.
 
 <table class="table table-bordered">
   <thead>
@@ -122,7 +122,7 @@ Similarly, we have options for including some or all of our compiled JavaScript.
 
 ## Bootstrap source code
 
-The Bootstrap source code download includes the precompiled CSS and JavaScript assets, along with source Sass, JavaScript, and documentation. More specifically, it includes the following and more:
+The Bootstrap source code download Includes the precompiled CSS and JavaScript assets, along with source Sass, JavaScript, and documentation. More specifically, it Includes the following and more:
 
 {% highlight plaintext %}
 bootstrap/
@@ -137,4 +137,4 @@ bootstrap/
 └── scss/
 {% endhighlight %}
 
-The `scss/` and `js/` are the source code for our CSS and JavaScript. The `dist/` folder includes everything listed in the precompiled download section above. The `site/docs/` folder includes the source code for our documentation, and `examples/` of Bootstrap usage. Beyond that, any other included file provides support for packages, license information, and development.
+The `scss/` and `js/` are the source code for our CSS and JavaScript. The `dist/` folder Includes everything listed in the precompiled download section above. The `site/docs/` folder Includes the source code for our documentation, and `examples/` of Bootstrap usage. Beyond that, any other included file provides support for packages, license information, and development.

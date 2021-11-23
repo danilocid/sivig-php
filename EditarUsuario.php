@@ -1,8 +1,8 @@
 <?php
 $titulo = 'Editar Usuario';
 $idpagina = 1;
-include 'includes/partials/header.php';
-include 'includes/partials/menu.php';
+include 'Includes/partials/header.php';
+include 'Includes/partials/menu.php';
 include 'Controller/UsuariosController.php'
 
 ?>
@@ -144,5 +144,5 @@ include 'Controller/UsuariosController.php'
   
 
   <?php
-  include 'includes/partials/footer.php';
+  include 'Includes/partials/footer.php';
   ?>

@@ -1,8 +1,8 @@
 <?php
 $titulo = 'Ver articulo';
 $idpagina = 4;
-include 'includes/partials/header.php';
-include 'includes/partials/menu.php';
+include 'Includes/partials/header.php';
+include 'Includes/partials/menu.php';
 include 'Controller/ArticulosController.php';
 
 
@@ -172,7 +172,7 @@ function ActualizaValorNeto() {
   document.getElementById("venta_imp").value = Math.round(valor - (valor / 1.19));
   }
 </script>';
-  include 'includes/partials/footer.php';
+  include 'Includes/partials/footer.php';
   
   ?>
 

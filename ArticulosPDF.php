@@ -148,7 +148,7 @@ ob_start();
                     <td>P.V.P</td>
 				</tr>
 				<?php
-                $arrayarticulos = $articulos->GetArticulos();
+                $arrayarticulos = $articulos->GetArticulosSinStock();
                 
 				foreach ($arrayarticulos as $d) {
 					echo '<tr class="datos">

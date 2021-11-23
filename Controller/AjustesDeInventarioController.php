@@ -24,7 +24,7 @@ Class AjustesDeInventario extends DB{
                 array_push($ajustes, $a);
             }
             return $ajustes;
-        } catch (\Throwable $th) {
+        } catch (PDOException $e) {
             print_r('Error conenection: ' . $e->getMessage());
         }
     }
@@ -37,7 +37,7 @@ Class AjustesDeInventario extends DB{
                 array_push($ajuste, $a);
             }
             return $ajuste;
-        } catch (\Throwable $th) {
+        } catch (PDOException $e) {
             print_r('Error conenection: ' . $e->getMessage());
         }
     }
@@ -50,7 +50,7 @@ Class AjustesDeInventario extends DB{
                 array_push($ajuste, $a);
             }
             return $ajuste;
-        } catch (\Throwable $th) {
+        } catch (PDOException $e) {
             print_r('Error conenection: ' . $e->getMessage());
         }
     }
@@ -102,7 +102,7 @@ Class AjustesDeInventario extends DB{
                                 }
                                 
                                 echo '<script type="text/javascript">
-                            window.location="AJustesDeInventario?id='.$id_ajuste.'";
+                            window.location="AjustesDeInventario?id='.$id_ajuste.'";
                             
                          </script>';
                                 

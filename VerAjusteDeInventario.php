@@ -1,8 +1,8 @@
 <?php
 $titulo = 'Ver detalle ajuste de inventario';
 $idpagina = 9;
-include 'includes/partials/header.php';
-include 'includes/partials/menu.php';
+include 'Includes/partials/header.php';
+include 'Includes/partials/menu.php';
 include 'Controller/UsuariosController.php';
 include 'Controller/ArticulosController.php';
 include 'Controller/AjustesDeInventarioController.php';
@@ -155,7 +155,7 @@ $detalleajsute = $ajustes->GetDetalleAjustePorId($_POST['id']);
   <?php
   
     
-  include 'includes/partials/footer.php';
+  include 'Includes/partials/footer.php';
   
   ?>
 

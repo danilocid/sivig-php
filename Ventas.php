@@ -1,8 +1,8 @@
 <?php
 $titulo = 'Ventas';
 $idpagina = 6;
-include 'includes/partials/header.php';
-include 'includes/partials/menu.php';
+include 'Includes/partials/header.php';
+include 'Includes/partials/menu.php';
 include 'Controller/VentasController.php';
 include 'Controller/ClientesController.php';
 include 'Controller/TipoDocumentoController.php';
@@ -155,7 +155,7 @@ if (isset($_SESSION['articulo'])) {
 </script>";
    }
 
-  include 'includes/partials/footer.php';
+  include 'Includes/partials/footer.php';
   
   ?>
 

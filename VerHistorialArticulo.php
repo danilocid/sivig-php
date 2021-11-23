@@ -1,8 +1,8 @@
 <?php
 $titulo = 'Ver historial articulo';
 $idpagina = 4;
-include 'includes/partials/header.php';
-include 'includes/partials/menu.php';
+include 'Includes/partials/header.php';
+include 'Includes/partials/menu.php';
 include 'Controller/ArticulosController.php';
 include 'Controller/MovimientosArticulosController.php';
 include 'Controller/TipoMovimientoController.php';
@@ -176,7 +176,7 @@ $usuario = new Usuario();
   
   <?php
       
-  include 'includes/partials/footer.php';
+  include 'Includes/partials/footer.php';
   
   ?>
 

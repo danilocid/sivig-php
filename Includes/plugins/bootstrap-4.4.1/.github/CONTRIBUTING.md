@@ -196,9 +196,9 @@ included in the project:
 
 **IMPORTANT**: By submitting a patch, you agree to allow the project owners to
 license your work under the terms of the [MIT License](../LICENSE) (if it
-includes code changes) and under the terms of the
+Includes code changes) and under the terms of the
 [Creative Commons Attribution 3.0 Unported License](https://creativecommons.org/licenses/by/3.0/)
-(if it includes documentation changes).
+(if it Includes documentation changes).
 
 
 ## Code guidelines

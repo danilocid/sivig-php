@@ -1,5 +1,5 @@
 <?php
-include 'includes/partials/header.php';
+include 'Includes/partials/header.php';
 Class ArticuloAjuste{
     public $id;
     public $cantidad;  

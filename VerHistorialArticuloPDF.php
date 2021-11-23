@@ -1,4 +1,3 @@
-
 <?php
 // (c) Xavier Nicolay
 // Exemple de génération de devis/facture PDF

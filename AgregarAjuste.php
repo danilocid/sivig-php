@@ -1,8 +1,8 @@
 <?php
 $titulo = 'Agregar ajuste de inventario';
 $idpagina = 9;
-include 'includes/partials/header.php';
-include 'includes/partials/menu.php';
+include 'Includes/partials/header.php';
+include 'Includes/partials/menu.php';
 include 'Controller/ArticulosController.php';
 include 'Controller/AjustesDeInventarioController.php';
 $monto_total = 0;
@@ -320,7 +320,7 @@ Class ArticuloAjuste{
     }
   }
     
-  include 'includes/partials/footer.php';
+  include 'Includes/partials/footer.php';
   
   ?>
 

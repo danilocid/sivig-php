@@ -279,7 +279,7 @@ class CPdf
     /**
      * @var array Store the stack for the transaction commands, each item in here is a record of the values of all the
      * publiciables within the class, so that the user can rollback at will (from each 'start' command)
-     * note that this includes the objects array, so these can be large.
+     * note that this Includes the objects array, so these can be large.
      */
     public $checkpoint = '';
 
@@ -1544,7 +1544,7 @@ EOT;
     }
 
     /**
-     * an image object, will be an XObject in the document, includes description and data
+     * an image object, will be an XObject in the document, Includes description and data
      */
     protected function o_image($id, $action, $options = '')
     {

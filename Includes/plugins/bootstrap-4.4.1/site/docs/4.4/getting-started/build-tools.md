@@ -8,7 +8,7 @@ toc: true
 
 ## Tooling setup
 
-Bootstrap uses [npm scripts](https://docs.npmjs.com/misc/scripts) for its build system. Our [package.json]({{ site.repo }}/blob/v{{ site.current_version }}/package.json) includes convenient methods for working with the framework, including compiling code, running tests, and more.
+Bootstrap uses [npm scripts](https://docs.npmjs.com/misc/scripts) for its build system. Our [package.json]({{ site.repo }}/blob/v{{ site.current_version }}/package.json) Includes convenient methods for working with the framework, including compiling code, running tests, and more.
 
 To use our build system and run our documentation locally, you'll need a copy of Bootstrap's source files and Node. Follow these steps and you should be ready to rock:
 
@@ -24,7 +24,7 @@ When completed, you'll be able to run the various commands provided from the com
 
 ## Using npm scripts
 
-Our [package.json]({{ site.repo }}/blob/v{{ site.current_version }}/package.json) includes the following commands and tasks:
+Our [package.json]({{ site.repo }}/blob/v{{ site.current_version }}/package.json) Includes the following commands and tasks:
 
 | Task | Description |
 | --- | --- |
@@ -42,7 +42,7 @@ We maintain the list of browsers supported through Autoprefixer in a separate fi
 
 ## Local documentation
 
-Running our documentation locally requires the use of Jekyll, a decently flexible static site generator that provides us: basic includes, Markdown-based files, templates, and more. Here's how to get it started:
+Running our documentation locally requires the use of Jekyll, a decently flexible static site generator that provides us: basic Includes, Markdown-based files, templates, and more. Here's how to get it started:
 
 1. Run through the [tooling setup](#tooling-setup) above to install Jekyll (the site builder) and other Ruby dependencies with `bundle install`.
 2. From the root `/bootstrap` directory, run `npm run docs-serve` in the command line.

@@ -1,8 +1,8 @@
 <?php
 $titulo = 'Articulos';
 $idpagina = 4;
-include 'includes/partials/header.php';
-include 'includes/partials/menu.php';
+include 'Includes/partials/header.php';
+include 'Includes/partials/menu.php';
 include 'Controller/ArticulosController.php';
 
 
@@ -242,7 +242,7 @@ function ActualizaValorNeto() {
   
   </script>';
   
-  include 'includes/partials/footer.php';
+  include 'Includes/partials/footer.php';
   
   ?>
 

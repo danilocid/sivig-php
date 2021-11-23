@@ -1,8 +1,8 @@
 <?php
 $titulo = 'Ver historial proveedor';
 $idpagina = 2;
-include 'includes/partials/header.php';
-include 'includes/partials/menu.php';
+include 'Includes/partials/header.php';
+include 'Includes/partials/menu.php';
 include 'Controller/TipoDocumentoController.php';
 include 'Controller/UsuariosController.php';
 include 'Controller/ComunasController.php';
@@ -257,7 +257,7 @@ $detallerecepciones = $recepciones->GetDetalleRecepcionesPorRUT($recepcionesprov
   <?php
   
     
-  include 'includes/partials/footer.php';
+  include 'Includes/partials/footer.php';
   
   ?>
 

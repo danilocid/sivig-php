@@ -123,7 +123,7 @@ require_once 'dompdf/autoload.inc.php';
 Note: packaged releases are named according using semantic
 versioning (_dompdf_MAJOR-MINOR-PATCH.zip_). So the 1.0.0 
 release would be dompdf_1-0-0.zip. This is the only download
-that includes the autoloader for Dompdf and all its dependencies.
+that Includes the autoloader for Dompdf and all its dependencies.
 
 ### Install with git
 

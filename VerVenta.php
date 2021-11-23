@@ -1,8 +1,8 @@
 <?php
 $titulo = 'Ver detalle venta';
 $idpagina = 6;
-include 'includes/partials/header.php';
-include 'includes/partials/menu.php';
+include 'Includes/partials/header.php';
+include 'Includes/partials/menu.php';
 include 'Controller/TipoDocumentoController.php';
 include 'Controller/UsuariosController.php';
 include 'Controller/VentasController.php';
@@ -166,7 +166,7 @@ $detalleventa = $detallesventas->GetDetalleVentaPorId($_POST['id']);
   <?php
   
     
-  include 'includes/partials/footer.php';
+  include 'Includes/partials/footer.php';
   
   ?>
 

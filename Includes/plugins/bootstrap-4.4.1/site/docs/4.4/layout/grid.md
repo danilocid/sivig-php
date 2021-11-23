@@ -242,7 +242,7 @@ Use `col-{breakpoint}-auto` classes to size columns based on the natural width o
 
 ## Responsive classes
 
-Bootstrap's grid includes five tiers of predefined classes for building complex responsive layouts. Customize the size of your columns on extra small, small, medium, large, or extra large devices however you see fit.
+Bootstrap's grid Includes five tiers of predefined classes for building complex responsive layouts. Customize the size of your columns on extra small, small, medium, large, or extra large devices however you see fit.
 
 ### All breakpoints
 

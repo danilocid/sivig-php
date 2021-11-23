@@ -9,8 +9,8 @@ class ArticuloRecepcion
 
 $titulo = 'Agregar recepcion';
 $idpagina = 8;
-include 'includes/partials/header.php';
-include 'includes/partials/menu.php';
+include 'Includes/partials/header.php';
+include 'Includes/partials/menu.php';
 include 'Controller/TipoDocumentoController.php';
 include 'Controller/ArticulosController.php';
 include 'Controller/RegionesController.php';
@@ -568,6 +568,6 @@ function ActualizaValorCostoNetoUnitario() {
   }
 </script>';
 
-include 'includes/partials/footer.php';
+include 'Includes/partials/footer.php';
 
 ?>

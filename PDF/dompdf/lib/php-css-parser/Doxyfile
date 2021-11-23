@@ -520,11 +520,11 @@ SHOW_INCLUDE_FILES     = YES
 
 SHOW_GROUPED_MEMB_INC  = NO
 
-# If the FORCE_LOCAL_INCLUDES tag is set to YES then doxygen will list include
+# If the FORCE_LOCAL_Includes tag is set to YES then doxygen will list include
 # files with double quotes in the documentation rather than with sharp brackets.
 # The default value is: NO.
 
-FORCE_LOCAL_INCLUDES   = NO
+FORCE_LOCAL_Includes   = NO
 
 # If the INLINE_INFO tag is set to YES then a tag [inline] is inserted in the
 # documentation for inline members.
@@ -1032,7 +1032,7 @@ HTML_FILE_EXTENSION    = .html
 # each generated HTML page. If the tag is left blank doxygen will generate a
 # standard header.
 #
-# To get valid HTML the header file that includes any scripts and style sheets
+# To get valid HTML the header file that Includes any scripts and style sheets
 # that doxygen needs, which is dependent on the configuration options used (e.g.
 # the setting GENERATE_TREEVIEW). It is highly recommended to start with a
 # default header using
@@ -1912,17 +1912,17 @@ MACRO_EXPANSION        = NO
 
 EXPAND_ONLY_PREDEF     = NO
 
-# If the SEARCH_INCLUDES tag is set to YES the includes files in the
+# If the SEARCH_Includes tag is set to YES the Includes files in the
 # INCLUDE_PATH will be searched if a #include is found.
 # The default value is: YES.
 # This tag requires that the tag ENABLE_PREPROCESSING is set to YES.
 
-SEARCH_INCLUDES        = YES
+SEARCH_Includes        = YES
 
 # The INCLUDE_PATH tag can be used to specify one or more directories that
 # contain include files that are not input files but should be processed by the
 # preprocessor.
-# This tag requires that the tag SEARCH_INCLUDES is set to YES.
+# This tag requires that the tag SEARCH_Includes is set to YES.
 
 INCLUDE_PATH           =
 
@@ -2145,7 +2145,7 @@ UML_LIMIT_NUM_FIELDS   = 10
 
 TEMPLATE_RELATIONS     = NO
 
-# If the INCLUDE_GRAPH, ENABLE_PREPROCESSING and SEARCH_INCLUDES tags are set to
+# If the INCLUDE_GRAPH, ENABLE_PREPROCESSING and SEARCH_Includes tags are set to
 # YES then doxygen will generate a graph for each documented file showing the
 # direct and indirect include dependencies of the file with other documented
 # files.
@@ -2154,7 +2154,7 @@ TEMPLATE_RELATIONS     = NO
 
 INCLUDE_GRAPH          = YES
 
-# If the INCLUDED_BY_GRAPH, ENABLE_PREPROCESSING and SEARCH_INCLUDES tags are
+# If the INCLUDED_BY_GRAPH, ENABLE_PREPROCESSING and SEARCH_Includes tags are
 # set to YES then doxygen will generate a graph for each documented file showing
 # the direct and indirect include dependencies of the file with other documented
 # files.

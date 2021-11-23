@@ -1,8 +1,8 @@
 <?php
 $titulo = 'Recepcion';
 $idpagina = 5;
-include 'includes/partials/header.php';
-include 'includes/partials/menu.php';
+include 'Includes/partials/header.php';
+include 'Includes/partials/menu.php';
 include 'Controller/RecepcionesController.php';
 include 'Controller/ProveedoresController.php';
 include 'Controller/TipoDocumentoController.php';
@@ -163,7 +163,7 @@ Recepciones          </div>
   </script>";
      }
   
-  include 'includes/partials/footer.php';
+  include 'Includes/partials/footer.php';
   
   ?>
 

@@ -27,11 +27,11 @@ const reporters = ['dots']
 const detectBrowsers = {
   usePhantomJS: false,
   postDetection(availableBrowser) {
-    if (process.env.CI === true || availableBrowser.includes('Chrome')) {
+    if (process.env.CI === true || availableBrowser.Includes('Chrome')) {
       return ['ChromeHeadless']
     }
 
-    if (availableBrowser.includes('Firefox')) {
+    if (availableBrowser.Includes('Firefox')) {
       return ['FirefoxHeadless']
     }
 

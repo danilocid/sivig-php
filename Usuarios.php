@@ -1,8 +1,8 @@
 <?php
 $titulo = 'Administracion';
 $idpagina = 1;
-include 'includes/partials/header.php';
-include 'includes/partials/menu.php';
+include 'Includes/partials/header.php';
+include 'Includes/partials/menu.php';
 include 'Controller/UsuariosController.php';
 ?>
 
@@ -197,6 +197,6 @@ $('#alert').on('closed.bs.alert', function () {
 });
 
 </script>";
-  include 'includes/partials/footer.php';
+  include 'Includes/partials/footer.php';
   ?>
 

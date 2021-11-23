@@ -29,7 +29,7 @@ $datos->unidades_total = $_POST['total_articulos'];
 $datos->observaciones = $_POST['observaciones'];
 $titulo = 'Agregar recepcion';
 $idpagina = 8;
-include 'includes/partials/header.php';
+include 'Includes/partials/header.php';
 include 'Model/dbConection.php';
 include 'Controller/RecepcionesController.php';
 print_r($datos);

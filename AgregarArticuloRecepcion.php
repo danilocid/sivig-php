@@ -1,5 +1,5 @@
 <?php
-include 'includes/partials/header.php';
+include 'Includes/partials/header.php';
 Class ArticuloRecepcion{
     public $id;
     public $costo_neto;

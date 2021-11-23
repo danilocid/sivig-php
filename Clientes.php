@@ -1,8 +1,8 @@
 <?php
 $titulo = 'Clientes';
 $idpagina = 3;
-include 'includes/partials/header.php';
-include 'includes/partials/menu.php';
+include 'Includes/partials/header.php';
+include 'Includes/partials/menu.php';
 include 'Controller/ClientesController.php';
 include 'Controller/ComunasController.php';
 include 'Controller/RegionesController.php';
@@ -244,6 +244,6 @@ $script = "<script type='text/javascript'>
   
   </script>";
 
-include 'includes/partials/footer.php';
+include 'Includes/partials/footer.php';
 
 ?>

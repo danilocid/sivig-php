@@ -55,9 +55,9 @@
 <!-- /.login-box -->
 
 <!-- jQuery 3 -->
-<script src="includes/js/jquery.min.js"></script>
+<script src="Includes/js/jquery.min.js"></script>
 <!-- Bootstrap 3.3.7 -->
-<script src="includes/js/bootstrap.min.js"></script>
+<script src="Includes/js/bootstrap.min.js"></script>
 <!-- Bootstrap 4 -->
 <script src="Includes/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 

@@ -2,12 +2,12 @@
 
 $titulo = 'Agregar ajuste';
 $idpagina = 1;
-include 'includes/partials/header.php';
+include 'Includes/partials/header.php';
 Class ArticuloAjuste{
     public $id;
     public $cantidad;  
 }
-include 'includes/partials/menu.php';
+include 'Includes/partials/menu.php';
 include 'Controller/ArticulosController.php';
 include 'Controller/AjustesDeInventarioController.php';
 $articulo = new Articulos();

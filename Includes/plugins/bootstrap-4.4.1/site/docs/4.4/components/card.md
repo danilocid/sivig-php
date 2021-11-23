@@ -8,7 +8,7 @@ toc: true
 
 ## About
 
-A **card** is a flexible and extensible content container. It includes options for headers and footers, a wide variety of content, contextual background colors, and powerful display options. If you're familiar with Bootstrap 3, cards replace our old panels, wells, and thumbnails. Similar functionality to those components is available as modifier classes for cards.
+A **card** is a flexible and extensible content container. It Includes options for headers and footers, a wide variety of content, contextual background colors, and powerful display options. If you're familiar with Bootstrap 3, cards replace our old panels, wells, and thumbnails. Similar functionality to those components is available as modifier classes for cards.
 
 ## Example
 
@@ -475,7 +475,7 @@ You can also change the borders on the card header and footer as needed, and eve
 
 ## Card layout
 
-In addition to styling the content within cards, Bootstrap includes a few options for laying out series of cards. For the time being, **these layout options are not yet responsive**.
+In addition to styling the content within cards, Bootstrap Includes a few options for laying out series of cards. For the time being, **these layout options are not yet responsive**.
 
 ### Card groups
 

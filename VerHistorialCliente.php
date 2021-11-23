@@ -1,8 +1,8 @@
 <?php
 $titulo = 'Ver historial cliente';
 $idpagina = 3;
-include 'includes/partials/header.php';
-include 'includes/partials/menu.php';
+include 'Includes/partials/header.php';
+include 'Includes/partials/menu.php';
 include 'Controller/VentasController.php';
 include 'Controller/ClientesController.php';
 include 'Controller/MediosDePagoController.php';
@@ -262,7 +262,7 @@ $detalleventas = $detalles->GetDetalleVentasPorRUT($ventascliente);
   <?php
   
     
-  include 'includes/partials/footer.php';
+  include 'Includes/partials/footer.php';
   
   ?>
 

@@ -1897,7 +1897,7 @@
    * @param {Boolean} subtract - set to true if you want to subtract the scroll values
    * @return {Object} rect - The modifier rect object
    */
-  function includeScroll(rect, element) {
+  function Includescroll(rect, element) {
     var subtract = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : false;
 
     var scrollTop = getScroll(element, 'top');
@@ -2115,7 +2115,7 @@
     }
 
     if (isIE10 && !fixedPosition ? parent.contains(scrollParent) : parent === scrollParent && scrollParent.nodeName !== 'BODY') {
-      offsets = includeScroll(offsets, parent);
+      offsets = Includescroll(offsets, parent);
     }
 
     return offsets;
