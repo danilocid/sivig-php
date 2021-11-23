@@ -2,7 +2,7 @@
 Class Comuna{
     public $Id;
     public $comuna;
-    public $provincia_id;
+    public $region_id;
 
 }
 Class Comunas extends DB{
@@ -16,10 +16,10 @@ Class Comunas extends DB{
             }
             return $this->comuna;
     }
-    public function GetComunaPorProvincia($IdProvincia){
+    public function GetComunaPorRegion($IdRegion){
         
-        $query = $this->connect()->prepare('SELECT * FROM comunas WHERE provincia_id = :IdProvincia');
-        $query->execute(['IdProvincia' => $IdProvincia]);
+        $query = $this->connect()->prepare('SELECT * FROM comunas WHERE region_id = :IdRegion');
+        $query->execute(['IdRegion' => $IdRegion]);
         $comunas = array();
         foreach ($query as $respuesta){
             $comuna = new Comuna();

@@ -5,7 +5,6 @@ class Proveedor {
     public $giro;
     public $direccion;
     public $comuna;
-    public $provincia;
     public $region;
     public $telefono;
     public $mail;
@@ -34,14 +33,13 @@ Class Proveedores extends DB{
         } else {
             try {
                 $query = $this->connect()->prepare('INSERT INTO proveedores VALUES(:rut, :nombre, :giro,
-                :direccion, :comuna, :provincia, :region, :telefono, :mail)');
+                :direccion, :comuna, :region, :telefono, :mail)');
                 $query->execute([
                     'rut' => $proveedor[0]->rut,
                     'nombre' => $proveedor[0]->nombre,
                     'giro' => $proveedor[0]->giro,
                     'direccion' => $proveedor[0]->direccion,
                     'comuna' => $proveedor[0]->comuna,
-                    'provincia' => $proveedor[0]->provincia,
                     'region' => $proveedor[0]->region,
                     'telefono' => $proveedor[0]->telefono,
                     'mail' => $proveedor[0]->mail
@@ -62,17 +60,6 @@ Class Proveedores extends DB{
             $arrayproveedores = array();
             
             foreach ($query as $c) {
-                $proveedor = new Proveedor();
-                $proveedor->rut = $c[0];
-                $proveedor->nombre = $c[1];
-                $proveedor->giro = $c[2];
-                $proveedor->direccion = $c[3];
-                $proveedor->comuna = $c[4];
-                $proveedor->provincia = $c[5];
-                $proveedor->region = $c[6];
-                $proveedor->telefono = $c[7];
-                $proveedor->mail = $c[8];
-  
                 array_push($arrayproveedores, $c);
             }
             return $arrayproveedores;
@@ -95,7 +82,7 @@ Class Proveedores extends DB{
         try {
             
             $query = $this->connect()->prepare('UPDATE proveedores SET nombre = :nombre,
-            giro = :giro, direccion = :direccion, comuna = :comuna, provincia = :provincia, region = :region,
+            giro = :giro, direccion = :direccion, comuna = :comuna, region = :region,
             telefono = :telefono, mail = :mail WHERE rut = :rut');
             $query->execute([
                     'rut' => $proveedor[0]->rut,
@@ -103,7 +90,6 @@ Class Proveedores extends DB{
                     'giro' => $proveedor[0]->giro,
                     'direccion' => $proveedor[0]->direccion,
                     'comuna' => $proveedor[0]->comuna,
-                    'provincia' => $proveedor[0]->provincia,
                     'region' => $proveedor[0]->region,
                     'telefono' => $proveedor[0]->telefono,
                     'mail' => $proveedor[0]->mail

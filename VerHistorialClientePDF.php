@@ -1,4 +1,3 @@
-
 <?php
 // (c) Xavier Nicolay
 // Exemple de génération de devis/facture PDF
@@ -11,7 +10,6 @@ include 'Controller/ClientesController.php';
 include 'Controller/DetalleVentasController.php';
 include 'Controller/MediosDePagoController.php';
 include 'Controller/ComunasController.php';
-include 'Controller/ProvinciasController.php';
 include 'Controller/RegionesController.php';
 $rut = "111111-1";
 if (isset($_GET['rut'])) {

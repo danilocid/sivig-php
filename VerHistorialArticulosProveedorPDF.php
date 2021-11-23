@@ -1,4 +1,3 @@
-
 <?php
 include 'Model/dbConection.php';
 include 'Controller/TipoDocumentoController.php';

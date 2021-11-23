@@ -11,7 +11,6 @@ include 'Controller/ProveedoresController.php';
   $proveedor->giro = $_POST['giro'];
   $proveedor->direccion = $_POST['direccion'];
   $proveedor->comuna = $_POST['comuna'];
-  $proveedor->provincia = $_POST['provincia'];
   $proveedor->region = $_POST['region'];
   $proveedor->telefono = $_POST['telefono'];
   $proveedor->mail = $_POST['mail'];

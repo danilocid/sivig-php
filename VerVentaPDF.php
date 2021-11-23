@@ -238,7 +238,6 @@ ob_start();
 
 
 <?php
-
 $html = ob_get_clean();
 //echo $html;
 require_once 'PDF/dompdf/autoload.inc.php';

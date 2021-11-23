@@ -5,7 +5,6 @@ class Clientes {
     public $giro;
     public $direccion;
     public $comuna;
-    public $provincia;
     public $region;
     public $telefono;
     public $mail;
@@ -17,17 +16,7 @@ Class Cliente extends DB{
             $arrayclientes = array();
             
             foreach ($query as $c) {
-                $clientes = new Clientes();
-                $clientes->rut = $c[0];
-                $clientes->nombre = $c[1];
-                $clientes->giro = $c[2];
-                $clientes->direccion = $c[3];
-                $clientes->comuna = $c[4];
-                $clientes->provincia = $c[5];
-                $clientes->region = $c[6];
-                $clientes->telefono = $c[7];
-                $clientes->mail = $c[8];
-  
+                
                 array_push($arrayclientes, $c);
             }
             return $arrayclientes;
@@ -43,14 +32,13 @@ Class Cliente extends DB{
         } else {
             try {
                 $query = $this->connect()->prepare('INSERT INTO clientes VALUES(:rut, :nombre, :giro,
-                :direccion, :comuna, :provincia, :region, :telefono, :mail)');
+                :direccion, :comuna, :region, :telefono, :mail)');
                 $query->execute([
                     'rut' => $cliente[0]->rut,
                     'nombre' => $cliente[0]->nombre,
                     'giro' => $cliente[0]->giro,
                     'direccion' => $cliente[0]->direccion,
                     'comuna' => $cliente[0]->comuna,
-                    'provincia' => $cliente[0]->provincia,
                     'region' => $cliente[0]->region,
                     'telefono' => $cliente[0]->telefono,
                     'mail' => $cliente[0]->mail
@@ -70,17 +58,7 @@ Class Cliente extends DB{
             $arrayclientes = array();
             
             foreach ($query as $c) {
-                $clientes = new Clientes();
-                $clientes->rut = $c[0];
-                $clientes->nombre = $c[1];
-                $clientes->giro = $c[2];
-                $clientes->direccion = $c[3];
-                $clientes->comuna = $c[4];
-                $clientes->provincia = $c[5];
-                $clientes->region = $c[6];
-                $clientes->telefono = $c[7];
-                $clientes->mail = $c[8];
-  
+
                 array_push($arrayclientes, $c);
             }
             return $arrayclientes;
@@ -90,7 +68,7 @@ Class Cliente extends DB{
         try {
             
             $query = $this->connect()->prepare('UPDATE clientes SET nombre = :nombre, 
-            giro = :giro, direccion = :direccion, comuna = :comuna, provincia = :provincia, region = :region,
+            giro = :giro, direccion = :direccion, comuna = :comuna, region = :region,
             telefono = :telefono, mail = :mail WHERE rut = :rut');
             $query->execute([
                 'rut' => $cliente[0]->rut,
@@ -98,7 +76,6 @@ Class Cliente extends DB{
                 'giro' => $cliente[0]->giro,
                 'direccion' => $cliente[0]->direccion,
                 'comuna' => $cliente[0]->comuna,
-                'provincia' => $cliente[0]->provincia,
                 'region' => $cliente[0]->region,
                 'telefono' => $cliente[0]->telefono,
                 'mail' => $cliente[0]->mail
@@ -129,5 +106,3 @@ Class Cliente extends DB{
         return $nombre;
 }
 }
-
-?>

@@ -2,10 +2,10 @@
 include '../Model/dbConection.php';
 include 'ComunasController.php';
 
-$idprovincia = $_POST['idprovincia'];
+$idregion = $_POST['idregion'];
 
 $comuna = new Comunas();
-$comunas = $comuna->GetComunaPorProvincia($idprovincia);
+$comunas = $comuna->GetComunaPorRegion($idregion);
 
 $html = "<option value=''>Seleccionar Comuna</option>";
 
