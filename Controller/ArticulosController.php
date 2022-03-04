@@ -1,31 +1,35 @@
 <?php
 
-Class Articulos extends DB{
-    public function GetArticulos(){
+class Articulos extends DB
+{
+    public function GetArticulos()
+    {
         $query = $this->connect()->prepare('SELECT * FROM articulos');
         $query->execute();
         $arrayarticulos = array();
-        
+
         foreach ($query as $a) {
-            
+
 
             array_push($arrayarticulos, $a);
         }
         return $arrayarticulos;
     }
-    public function GetArticulosSinStock(){
+    public function GetArticulosSinStock()
+    {
         $query = $this->connect()->prepare('SELECT * FROM articulos WHERE stock != 0');
         $query->execute();
         $arrayarticulos = array();
-        
+
         foreach ($query as $a) {
-            
+
 
             array_push($arrayarticulos, $a);
         }
         return $arrayarticulos;
     }
-    public function AgregarArticulos($articulos, $enlace){
+    public function AgregarArticulos($articulos, $enlace)
+    {
         $query = $this->connect()->prepare('SELECT * FROM articulos WHERE cod_interno = :cod_interno OR cod_barras = :cod_barras');
         $query->execute(['cod_interno' => $articulos[0]->cod_interno, 'cod_barras' => $articulos[0]->cod_barras]);
         if ($query->rowCount()) {
@@ -48,48 +52,49 @@ Class Articulos extends DB{
                     'activo' => $articulos[0]->activo
                 ]);
                 echo '<script type="text/javascript">
-                    window.location="'.$enlace.'?m=2";
+                    window.location="' . $enlace . '?m=2";
                   </script>';
             } catch (PDOException $e) {
                 print_r('Error conenection: ' . $e->getCode());
-               
             }
         }
     }
-    public function GetArticulosPorId($id){
+    public function GetArticulosPorId($id)
+    {
         $query = $this->connect()->prepare('SELECT * FROM articulos WHERE id = :id');
         $query->execute(['id' => $id]);
         $arrayarticulos = array();
-        
+
         foreach ($query as $a) {
-            
+
             array_push($arrayarticulos, $a);
         }
         return $arrayarticulos;
     }
-    public function GetDescripcionArticuloPorId($id){
+    public function GetDescripcionArticuloPorId($id)
+    {
         $query = $this->connect()->prepare('SELECT * FROM articulos WHERE id = :id');
         $query->execute(['id' => $id]);
-       
-        
+
+
         foreach ($query as $a) {
             $descripcion = $a[3];
-            
         }
         return $descripcion;
     }
-    public function GetPrecioDeVentaArticuloPorId($id){
+    public function GetPrecioDeVentaArticuloPorId($id)
+    {
         $query = $this->connect()->prepare('SELECT * FROM articulos WHERE id = :id');
         $query->execute(['id' => $id]);
-       
-        
+
+
         foreach ($query as $a) {
             $precio = $a[6] + $a[7];
-            
         }
         return $precio;
     }
-    public function EditarArticulo($articulo){
+    public function EditarArticulo($articulo)
+    {
         try {
             $query = $this->connect()->prepare('UPDATE articulos SET cod_interno = :cod_interno, cod_barras = :cod_barras,
             descripcion = :descripcion, venta_neto = :venta_neto, venta_imp = :venta_imp,
@@ -108,50 +113,56 @@ Class Articulos extends DB{
               </script>';
         } catch (PDOException $e) {
             print_r('Error conenection: ' . $e->getMessage());
-           
         }
     }
-    public function UpdateStockArticuloPorId($id, $cantidad, $costo_neto, $costo_imp){
-        try{
-        $query = $this->connect()->prepare('SELECT * FROM articulos WHERE id = :id');
-        $query->execute(['id' => $id]);
-       
-        
-        foreach ($query as $a) {
-            $stock = $a['stock'];
-            
-        }
-        $stock = $stock + $cantidad;
-        $query = $this->connect()->prepare('UPDATE articulos SET stock = :stock, costo_neto = :costo_neto, costo_imp = :costo_imp WHERE id = :id');
-        $query->execute(['id' => $id,
-        'stock' => $stock,
-        'costo_neto' => $costo_neto,
-        'costo_imp' => $costo_imp]);
-        }catch (PDOException $e) {
+    public function UpdateStockArticuloPorId($id, $cantidad, $costo_neto, $costo_imp)
+    {
+        try {
+            $query = $this->connect()->prepare('SELECT * FROM articulos WHERE id = :id');
+            $query->execute(['id' => $id]);
+
+
+            foreach ($query as $a) {
+                $stock = $a['stock'];
+            }
+            $stock = $stock + $cantidad;
+            $query = $this->connect()->prepare('UPDATE articulos SET stock = :stock, costo_neto = :costo_neto, costo_imp = :costo_imp WHERE id = :id');
+            $query->execute([
+                'id' => $id,
+                'stock' => $stock,
+                'costo_neto' => $costo_neto,
+                'costo_imp' => $costo_imp
+            ]);
+        } catch (PDOException $e) {
             echo 'error al actualizar el stock del articulo';
             print_r('Error conenection: ' . $e->getMessage());
-        
         }
     }
-    public function UpdateStockArticuloVentaPorId($id, $cantidad){
-        try{
-        $query = $this->connect()->prepare('SELECT * FROM articulos WHERE id = :id');
-        $query->execute(['id' => $id]);
-       
-        
-        foreach ($query as $a) {
-            $stock = $a['stock'];
-            
-        }
-        $stock = $stock - $cantidad;
-        $query = $this->connect()->prepare('UPDATE articulos SET stock = :stock WHERE id = :id');
-        $query->execute(['id' => $id,
-        'stock' => $stock
-        ]);
-        }catch (PDOException $e) {
+    public function UpdateStockArticuloVentaPorId($id, $cantidad, $tipo)
+    {
+        try {
+            $query = $this->connect()->prepare('SELECT * FROM articulos WHERE id = :id');
+            $query->execute(['id' => $id]);
+
+
+            foreach ($query as $a) {
+                $stock = $a['stock'];
+            }
+            if ($tipo == 'IN') {
+                $stock = $stock + $cantidad;
+            } else {
+                $stock = $stock - $cantidad;
+            }
+
+
+            $query = $this->connect()->prepare('UPDATE articulos SET stock = :stock WHERE id = :id');
+            $query->execute([
+                'id' => $id,
+                'stock' => $stock
+            ]);
+        } catch (PDOException $e) {
             echo 'error al actualizar el stock del articulo';
             print_r('Error conenection: ' . $e->getMessage());
-        
         }
     }
 }

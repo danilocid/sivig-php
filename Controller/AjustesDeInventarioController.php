@@ -97,8 +97,13 @@ Class AjustesDeInventario extends DB{
                                     'unidades' => abs($a->cantidad),
                                     'usuario' => $_SESSION['id']
                                     ]);
+                                    if ($a->tipo == 'IN') {
+                                        $tipo = 'IN';
+                                    } else {
+                                        $tipo = 'OUT';
+                                    }
                                     
-                                    $articulo->UpdateStockArticuloVentaPorId($a->id,$a->cantidad);
+                                    $articulo->UpdateStockArticuloVentaPorId($a->id,$a->cantidad, $tipo);
                                 }
                                 
                                 echo '<script type="text/javascript">
@@ -129,5 +134,3 @@ Class AjustesDeInventario extends DB{
         }
     }
 }
-
-?>

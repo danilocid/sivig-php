@@ -2,7 +2,8 @@
 include 'Includes/partials/header.php';
 Class ArticuloAjuste{
     public $id;
-    public $cantidad;  
+    public $cantidad; 
+    public $tipo; 
 }
 
 $existe = false;
@@ -24,6 +25,7 @@ if (isset($_SESSION['articulo'])) {
             $articulo = new ArticuloAjuste();
             $articulo->id = $_POST['articulo'];
             $articulo->cantidad = $_POST['cantidad'] + $ar->cantidad;
+            $articulo->tipo = $_POST['tipo'];
             array_push($articulofrm2, $articulo);
             unset($articulo);
             $existe = true;
@@ -32,6 +34,7 @@ if (isset($_SESSION['articulo'])) {
             $articulo = new ArticuloAjuste();
             $articulo->id = $ar->id;
             $articulo->cantidad = $ar->cantidad;
+            $articulo->tipo = $ar->tipo; 
             array_push($articulofrm2, $articulo);
          
         }
@@ -48,6 +51,7 @@ if (isset($_SESSION['articulo'])) {
         $articulo = new ArticuloAjuste();
         $articulo->id = $_POST['articulo'];
         $articulo->cantidad = $_POST['cantidad'];
+        $articulo->tipo = $_POST['tipo'];
         array_push($articulofrm2, $articulo);
       
       
@@ -65,6 +69,7 @@ if (isset($_SESSION['articulo'])) {
     $articulo = new ArticuloAjuste();
     $articulo->id = $_POST['articulo'];
     $articulo->cantidad = $_POST['cantidad'];
+    $articulo->tipo = $_POST['tipo'];
     array_push($articulofrm, $articulo);
    
     $_SESSION['articulo'] = $articulofrm;
@@ -80,5 +85,3 @@ if (isset($_SESSION['articulo'])) {
 echo '<script type="text/javascript">
                    window.location="AgregarAjuste";
                 </script>';
-
-?>

@@ -1,17 +1,25 @@
-<?php 
+<?php
 class DB
 {
 	private $host;
 	private $db;
 	private $user;
 	private $password;
+	private $amb = 'DEV';
 
 	public function __construct()
 	{
-		$this->host = 'localhost';
-		$this->db = 'sivig_old';
-		$this->user = 'root';
-		$this->password = '';
+		if ($this->amb == 'DEV') {
+			$this->host = 'localhost';
+			$this->db = 'sivig';
+			$this->user = 'root';
+			$this->password = '';
+		} else {
+			$this->host = 'localhost';
+			$this->db = 'orhanoik_SIVIG';
+			$this->user = 'orhanoik_sivig';
+			$this->password = 'sivig2021-';
+		}
 	}
 
 	public function connect()
@@ -30,6 +38,4 @@ class DB
 			print_r('Error conenection: ' . $e->getMessage());
 		}
 	}
-
 }
- ?>

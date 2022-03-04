@@ -1,17 +1,18 @@
 <footer class="main-footer">
-      <div class="float-right d-none d-sm-block">
-        <b>Version</b> Alpha
-      </div>
-      <strong>Copyright &copy; 2020 SIVIG</strong>
-    </footer>
-  
-    <!-- Control Sidebar -->
-    <aside class="control-sidebar control-sidebar-dark">
-      <!-- Control sidebar content goes here -->
-    </aside>
-    <!-- /.control-sidebar -->
-  </div>
-  <!-- ./wrapper -->
+    <div class="float-right d-none d-sm-block">
+        <b>Version</b> 03032022
+        <!-- //TODO: cambiar version cada vez que se suben cambios-->
+    </div>
+    <strong>Copyright &copy; 2022 SIVIG</strong>
+</footer>
+
+<!-- Control Sidebar -->
+<aside class="control-sidebar control-sidebar-dark">
+    <!-- Control sidebar content goes here -->
+</aside>
+<!-- /.control-sidebar -->
+</div>
+<!-- ./wrapper -->
 <!-- jQuery -->
 <script src="Includes/plugins/jquery/jquery.min.js"></script>
 <!-- Bootstrap 4 -->
@@ -26,82 +27,98 @@
 <!-- Select2 -->
 <script src="Includes/plugins/select2/js/select2.full.min.js"></script>
 <script>
-  $(function () {
-   
+$(function() {
+
     $('#tabla1').DataTable({
-      'paging'      : true,
-      'lengthChange': false,
-      'searching'   : true,
-      'ordering'    : true,
-      'info'        : true,
-      'autoWidth'   : true,
-      "order": [[ 0, "desc" ]]
+        'paging': true,
+        'lengthChange': false,
+        'searching': true,
+        'ordering': true,
+        'info': true,
+        'autoWidth': true,
+        "order": [
+            [0, "desc"]
+        ]
     })
     $('#tabla2').DataTable({
-      'paging'      : true,
-      'lengthChange': false,
-      'searching'   : true,
-      'ordering'    : true,
-      'info'        : true,
-      'autoWidth'   : true,
-      "order": [[ 0, "desc" ]]
+        'paging': true,
+        'lengthChange': false,
+        'searching': true,
+        'ordering': true,
+        'info': true,
+        'autoWidth': true,
+        "order": [
+            [0, "desc"]
+        ]
     })
-    
+
     $('.select2').select2({
-      theme: 'bootstrap4'
+        theme: 'bootstrap4'
     })
-    
-  })
-  function checkRut(rut) {
+
+})
+
+function checkRut(rut) {
     // Despejar Puntos
-    var valor = rut.value.replace('.','');
+    var valor = rut.value.replace('.', '');
     // Despejar Guión
-    valor = valor.replace('-','');
-    
+    valor = valor.replace('-', '');
+
     // Aislar Cuerpo y Dígito Verificador
-    cuerpo = valor.slice(0,-1);
+    cuerpo = valor.slice(0, -1);
     dv = valor.slice(-1).toUpperCase();
-    
+
     // Formatear RUN
-    rut.value = cuerpo + '-'+ dv
-    
+    rut.value = cuerpo + '-' + dv
+
     // Si no cumple con el mínimo ej. (n.nnn.nnn)
-    if(cuerpo.length < 7) { rut.setCustomValidity("RUT Incompleto"); return false;}
-    
+    if (cuerpo.length < 7) {
+        rut.setCustomValidity("RUT Incompleto");
+        return false;
+    }
+
     // Calcular Dígito Verificador
     suma = 0;
     multiplo = 2;
-    
+
     // Para cada dígito del Cuerpo
-    for(i=1;i<=cuerpo.length;i++) {
-    
+    for (i = 1; i <= cuerpo.length; i++) {
+
         // Obtener su Producto con el Múltiplo Correspondiente
         index = multiplo * valor.charAt(cuerpo.length - i);
-        
+
         // Sumar al Contador General
         suma = suma + index;
-        
+
         // Consolidar Múltiplo dentro del rango [2,7]
-        if(multiplo < 7) { multiplo = multiplo + 1; } else { multiplo = 2; }
-  
+        if (multiplo < 7) {
+            multiplo = multiplo + 1;
+        } else {
+            multiplo = 2;
+        }
+
     }
-    
+
     // Calcular Dígito Verificador en base al Módulo 11
     dvEsperado = 11 - (suma % 11);
-    
+
     // Casos Especiales (0 y K)
-    dv = (dv == 'K')?10:dv;
-    dv = (dv == 0)?11:dv;
-    
+    dv = (dv == 'K') ? 10 : dv;
+    dv = (dv == 0) ? 11 : dv;
+
     // Validar que el Cuerpo coincide con su Dígito Verificador
-    if(dvEsperado != dv) { rut.setCustomValidity("RUT Inválido"); return false; }
-    
+    if (dvEsperado != dv) {
+        rut.setCustomValidity("RUT Inválido");
+        return false;
+    }
+
     // Si todo sale bien, eliminar errores (decretar que es válido)
     rut.setCustomValidity('');
 }
 </script>
-<?php if( isset($script)){
- echo $script;
+<?php if (isset($script)) {
+    echo $script;
 } ?>
 </body>
+
 </html>

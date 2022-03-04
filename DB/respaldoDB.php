@@ -82,6 +82,4 @@
 
 	}
 
-	backDb("localhost", "root", "", "SIVIG_old", "*");
-
-?>
+	backDb("localhost", "root", "", "sivig", "*");
