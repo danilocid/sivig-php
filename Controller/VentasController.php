@@ -51,7 +51,7 @@ Class Ventas extends DB{
                                     'usuario' => $_SESSION['id']
                                     ]);
                                     $articulo = new Articulos();
-                                    $articulo->UpdateStockArticuloVentaPorId($a->id,$a->cantidad);
+                                    $articulo->UpdateStockArticuloVentaPorId($a->id,$a->cantidad,"OUT");
                                 }
                                 
                                 echo '<script type="text/javascript">
@@ -138,5 +138,3 @@ Class Ventas extends DB{
     
     
 }
-
-?>

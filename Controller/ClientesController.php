@@ -1,5 +1,6 @@
 <?php
-class Clientes {
+class Clientes
+{
     public $rut;
     public $nombre;
     public $giro;
@@ -9,25 +10,28 @@ class Clientes {
     public $telefono;
     public $mail;
 }
-Class Cliente extends DB{
-    public function GetClientes(){
-            $query = $this->connect()->prepare('SELECT * FROM clientes');
-            $query->execute();
-            $arrayclientes = array();
-            
-            foreach ($query as $c) {
-                
-                array_push($arrayclientes, $c);
-            }
-            return $arrayclientes;
+class Cliente extends DB
+{
+    public function GetClientes()
+    {
+        $query = $this->connect()->prepare('SELECT * FROM clientes');
+        $query->execute();
+        $arrayclientes = array();
+
+        foreach ($query as $c) {
+
+            array_push($arrayclientes, $c);
+        }
+        return $arrayclientes;
     }
 
-    public function AgregarCliente($cliente, $enlace){
+    public function AgregarCliente($cliente, $enlace)
+    {
         $query = $this->connect()->prepare('SELECT * FROM clientes WHERE rut = :rut');
         $query->execute(['rut' => $cliente[0]->rut]);
         if ($query->rowCount()) {
             echo '<script type="text/javascript">
-            window.location="'.$enlace.'.php?m=1";
+            window.location="' . $enlace . '.php?m=1";
             </script>';
         } else {
             try {
@@ -44,29 +48,30 @@ Class Cliente extends DB{
                     'mail' => $cliente[0]->mail
                 ]);
                 echo '<script type="text/javascript">
-                    window.location="'.$enlace.'.php?m=2";
+                    window.location="' . $enlace . '.php?m=2";
                   </script>';
             } catch (PDOException $e) {
                 print_r('Error conenection: ' . $e->getCode());
-               
             }
         }
     }
-    public function GetClientesPorRUT($rut){
-            $query = $this->connect()->prepare('SELECT * FROM clientes WHERE rut = :rut');
-            $query->execute(['rut' =>$rut]);
-            $arrayclientes = array();
-            
-            foreach ($query as $c) {
+    public function GetClientesPorRUT($rut)
+    {
+        $query = $this->connect()->prepare('SELECT * FROM clientes WHERE rut = :rut');
+        $query->execute(['rut' => $rut]);
+        $arrayclientes = array();
 
-                array_push($arrayclientes, $c);
-            }
-            return $arrayclientes;
+        foreach ($query as $c) {
+
+            array_push($arrayclientes, $c);
+        }
+        return $arrayclientes;
     }
-       
-    public function EditarCliente($cliente){
+
+    public function EditarCliente($cliente)
+    {
         try {
-            
+
             $query = $this->connect()->prepare('UPDATE clientes SET nombre = :nombre, 
             giro = :giro, direccion = :direccion, comuna = :comuna, region = :region,
             telefono = :telefono, mail = :mail WHERE rut = :rut');
@@ -85,24 +90,25 @@ Class Cliente extends DB{
               </script>';
         } catch (PDOException $e) {
             print_r('Error conenection: ' . $e->getMessage());
-           print_r($query);
-           print_r($cliente);
+            print_r($query);
+            print_r($cliente);
         }
     }
 
-    public function GetNombreClientePorRut($rut){
+    public function GetNombreClientePorRut($rut)
+    {
         $query = $this->connect()->prepare('SELECT nombre FROM clientes WHERE rut = :rut');
-        $query->execute(['rut' =>$rut]);
-       
-        
+        $query->execute(['rut' => $rut]);
+
+
         foreach ($query as $c) {
             $cliente = new Clientes();
-           
+
             $cliente->nombre = $c[0];
-           
-            
+
+
             $nombre = $cliente->nombre;
         }
         return $nombre;
-}
+    }
 }

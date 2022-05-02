@@ -49,5 +49,3 @@ Class DetallesVentas extends DB{
 
     }
 }
-
-?>

@@ -57,5 +57,3 @@ if (isset($_SESSION['articulo'])) {
 echo '<script type="text/javascript">
                   window.location="AgregarRecepcion";
                 </script>';
-
-?>

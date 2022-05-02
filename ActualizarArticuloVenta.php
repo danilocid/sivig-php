@@ -1,12 +1,12 @@
 <?php
 include 'Includes/partials/header.php';
-Class ArticuloVenta{
+class ArticuloVenta
+{
     public $id;
     public $venta_neto;
     public $venta_imp;
     public $cantidad;
     public $total;
-   
 }
 
 $existe = false;
@@ -15,9 +15,9 @@ $articulofrm = array();
 if (isset($_SESSION['articulo'])) {
     $articulofrm = $_SESSION['articulo'];
     $articulofrm2 = array();
-    
+
     foreach ($articulofrm as $ar) {
-        
+
         if ($ar->id != $_POST['id']) {
             $articulo = new ArticuloVenta();
             $articulo->id = $ar->id;
@@ -26,10 +26,9 @@ if (isset($_SESSION['articulo'])) {
             $articulo->cantidad = $ar->cantidad;
             $articulo->total = $ar->total;
             array_push($articulofrm2, $articulo);
-          
+
             unset($articulo);
-    
-        }else {
+        } else {
             $articulo = new ArticuloVenta();
             $articulo->id = $ar->id;
             $articulo->venta_neto = $_POST['precio_venta'] / 1.19;
@@ -37,29 +36,17 @@ if (isset($_SESSION['articulo'])) {
             $articulo->cantidad = $_POST['cantidad'];
             $articulo->total = $_POST['precio_venta'] * $_POST['cantidad'];
             array_push($articulofrm2, $articulo);
-          
+
             unset($articulo);
         }
     }
     try {
-        
+
         $_SESSION['articulo'] = $articulofrm2;
     } catch (\Throwable $th) {
-      
     }
-
-
-    
-       
-        
-    
 }
-
-
-
 
 echo '<script type="text/javascript">
                    window.location="AgregarVenta";
                 </script>';
-
-?>

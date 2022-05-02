@@ -27,5 +27,3 @@ Class DetallesRecepciones extends DB{
         
     }
 }
-
-?>

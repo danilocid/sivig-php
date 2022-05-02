@@ -281,31 +281,6 @@ class ArticuloAjuste
                     </div>
     </section>
 </div>
-<!-- /.card-footer-->
-
-
-
-
-
-
-<!-- /.modal-content -->
-
-<!-- /.modal-dialog -->
-
-
-<!-- Fin contenido -->
-
-
-
-<!-- Default box -->
-
-<!-- Fin contenido -->
-
-
-
-<!-- Default box -->
-
-
 <?php
 if (isset($_GET['m'])) {
     if ($_GET['m'] == 1) {
