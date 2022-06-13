@@ -1,6 +1,6 @@
 
 
-CREATE TABLE `ajustes_de_inventario` (
+CREATE TABLE IF NOT EXISTS  `ajustes_de_inventario` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `tipo_movimiento` int(11) NOT NULL,
   `monto_neto` int(11) NOT NULL,
@@ -13,7 +13,7 @@ CREATE TABLE `ajustes_de_inventario` (
 
 
 
-CREATE TABLE `articulos` (
+CREATE TABLE IF NOT EXISTS `articulos` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `cod_interno` varchar(60) NOT NULL,
   `cod_barras` varchar(60) NOT NULL,
@@ -29,7 +29,7 @@ CREATE TABLE `articulos` (
 
 
 
-CREATE TABLE `clientes` (
+CREATE TABLE IF NOT EXISTS `clientes` (
   `rut` varchar(11) NOT NULL,
   `nombre` varchar(120) NOT NULL,
   `giro` varchar(90) NOT NULL,
@@ -43,7 +43,7 @@ CREATE TABLE `clientes` (
 
 
 
-CREATE TABLE `comunas` (
+CREATE TABLE IF NOT EXISTS `comunas` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `comuna` varchar(64) NOT NULL,
   `region_id` int(11) NOT NULL,
@@ -52,7 +52,7 @@ CREATE TABLE `comunas` (
 
 
 
-CREATE TABLE `detalle_ajuste` (
+CREATE TABLE IF NOT EXISTS `detalle_ajuste` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `id_ajuste` int(11) NOT NULL,
   `articulo` int(11) NOT NULL,
@@ -64,7 +64,7 @@ CREATE TABLE `detalle_ajuste` (
 
 
 
-CREATE TABLE `detalle_recepciones` (
+CREATE TABLE IF NOT EXISTS `detalle_recepciones` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `recepcion` int(11) NOT NULL,
   `articulo` int(11) NOT NULL,
@@ -76,21 +76,19 @@ CREATE TABLE `detalle_recepciones` (
 
 
 
-CREATE TABLE `detalle_ventas` (
+CREATE TABLE IF NOT EXISTS `detalle_ventas` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `id_venta` int(11) NOT NULL,
   `articulo` int(11) NOT NULL,
   `cantidad` int(11) NOT NULL,
   `precio_neto` int(11) NOT NULL,
   `precio_imp` int(11) NOT NULL,
-  PRIMARY KEY (`id`),
-  KEY `detalle_ventas_ibfk_1` (`id_venta`),
-  CONSTRAINT `detalle_ventas_ibfk_1` FOREIGN KEY (`id_venta`) REFERENCES `ventas` (`id`)
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=latin1;
 
 
 
-CREATE TABLE `grupospaginas` (
+CREATE TABLE IF NOT EXISTS `grupospaginas` (
   `idgrupo` int(11) NOT NULL AUTO_INCREMENT,
   `nombregrupo` varchar(120) NOT NULL,
   `imagengrupo` varchar(120) NOT NULL,
@@ -100,7 +98,7 @@ CREATE TABLE `grupospaginas` (
 
 
 
-CREATE TABLE `medios_de_pago` (
+CREATE TABLE IF NOT EXISTS `medios_de_pago` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `medio_de_pago` varchar(120) NOT NULL,
   PRIMARY KEY (`id`)
@@ -108,7 +106,7 @@ CREATE TABLE `medios_de_pago` (
 
 
 
-CREATE TABLE `movimientos_articulos` (
+CREATE TABLE IF NOT EXISTS `movimientos_articulos` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `articulo` int(11) NOT NULL,
   `movimiento` int(11) NOT NULL,
@@ -120,7 +118,7 @@ CREATE TABLE `movimientos_articulos` (
 
 
 
-CREATE TABLE `paginas` (
+CREATE TABLE IF NOT EXISTS `paginas` (
   `IdPagina` int(11) NOT NULL AUTO_INCREMENT,
   `NombrePagina` varchar(120) NOT NULL,
   `Enlacepagina` varchar(120) NOT NULL,
@@ -131,7 +129,7 @@ CREATE TABLE `paginas` (
 
 
 
-CREATE TABLE `permisos` (
+CREATE TABLE IF NOT EXISTS `permisos` (
   `IdPermiso` int(11) NOT NULL AUTO_INCREMENT,
   `IdUsuario` int(11) NOT NULL,
   `Idpagina` int(11) NOT NULL,
@@ -141,7 +139,7 @@ CREATE TABLE `permisos` (
 
 
 
-CREATE TABLE `proveedores` (
+CREATE TABLE IF NOT EXISTS `proveedores` (
   `rut` varchar(11) NOT NULL,
   `nombre` varchar(80) NOT NULL,
   `giro` varchar(90) NOT NULL,
@@ -155,7 +153,7 @@ CREATE TABLE `proveedores` (
 
 
 
-CREATE TABLE `recepciones` (
+CREATE TABLE IF NOT EXISTS `recepciones` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `proveedor` varchar(11) NOT NULL,
   `documento` int(11) NOT NULL,
@@ -171,7 +169,7 @@ CREATE TABLE `recepciones` (
 
 
 
-CREATE TABLE `regiones` (
+CREATE TABLE IF NOT EXISTS `regiones` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `region` varchar(64) NOT NULL,
   PRIMARY KEY (`id`)
@@ -179,7 +177,7 @@ CREATE TABLE `regiones` (
 
 
 
-CREATE TABLE `tipo_documento` (
+CREATE TABLE IF NOT EXISTS `tipo_documento` (
   `id` int(11) NOT NULL,
   `tipo` varchar(60) NOT NULL,
   PRIMARY KEY (`id`)
@@ -187,7 +185,7 @@ CREATE TABLE `tipo_documento` (
 
 
 
-CREATE TABLE `tipo_movimiento` (
+CREATE TABLE IF NOT EXISTS `tipo_movimiento` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `tipo` varchar(60) NOT NULL,
   PRIMARY KEY (`id`)
@@ -195,7 +193,7 @@ CREATE TABLE `tipo_movimiento` (
 
 
 
-CREATE TABLE `usuarios` (
+CREATE TABLE IF NOT EXISTS `usuarios` (
   `IdUsuario` int(11) NOT NULL AUTO_INCREMENT,
   `User` varchar(60) NOT NULL,
   `password` varchar(60) NOT NULL,
@@ -207,7 +205,7 @@ CREATE TABLE `usuarios` (
 
 
 
-CREATE TABLE `ventas` (
+CREATE TABLE IF NOT EXISTS `ventas` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `monto_neto` int(11) NOT NULL,
   `monto_imp` int(11) NOT NULL,
@@ -217,15 +215,7 @@ CREATE TABLE `ventas` (
   `medio_pago` int(11) NOT NULL,
   `fecha` date NOT NULL,
   `usuario` int(11) NOT NULL,
-  PRIMARY KEY (`id`),
-  KEY `cliente` (`cliente`),
-  KEY `medio_pago` (`medio_pago`),
-  KEY `tipo_documento` (`tipo_documento`),
-  KEY `usuario` (`usuario`),
-  CONSTRAINT `ventas_ibfk_1` FOREIGN KEY (`cliente`) REFERENCES `clientes` (`rut`),
-  CONSTRAINT `ventas_ibfk_2` FOREIGN KEY (`medio_pago`) REFERENCES `medios_de_pago` (`id`),
-  CONSTRAINT `ventas_ibfk_3` FOREIGN KEY (`tipo_documento`) REFERENCES `tipo_documento` (`id`),
-  CONSTRAINT `ventas_ibfk_4` FOREIGN KEY (`usuario`) REFERENCES `usuarios` (`IdUsuario`)
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=latin1;
 
 INSERT INTO ajustes_de_inventario VALUES("1","4","600","116","ajuste de inventario","2021-11-23","1");
@@ -314,7 +304,7 @@ INSERT INTO comunas VALUES("3","General Lagos","1");
 INSERT INTO comunas VALUES("4","Putre","1");
 INSERT INTO comunas VALUES("5","Alto Hospicio","2");
 INSERT INTO comunas VALUES("6","Iquique","2");
-INSERT INTO comunas VALUES("7","Cami?a","2");
+INSERT INTO comunas VALUES("7","Camiña","2");
 INSERT INTO comunas VALUES("8","Colchane","2");
 INSERT INTO comunas VALUES("9","Huara","2");
 INSERT INTO comunas VALUES("10","Pica","2");
@@ -328,7 +318,7 @@ INSERT INTO comunas VALUES("17","Antofagasta","3");
 INSERT INTO comunas VALUES("18","Mejillones","3");
 INSERT INTO comunas VALUES("19","Sierra Gorda","3");
 INSERT INTO comunas VALUES("20","Taltal","3");
-INSERT INTO comunas VALUES("21","Cha?aral","4");
+INSERT INTO comunas VALUES("21","Chañaral","4");
 INSERT INTO comunas VALUES("22","Diego de Almagro","4");
 INSERT INTO comunas VALUES("23","Copiapo","4");
 INSERT INTO comunas VALUES("24","Caldera","4");
@@ -342,7 +332,7 @@ INSERT INTO comunas VALUES("31","Coquimbo","5");
 INSERT INTO comunas VALUES("32","Andacollo","5");
 INSERT INTO comunas VALUES("33","La Higuera","5");
 INSERT INTO comunas VALUES("34","Paihuano","5");
-INSERT INTO comunas VALUES("35","Vicu?a","5");
+INSERT INTO comunas VALUES("35","Vicuña","5");
 INSERT INTO comunas VALUES("36","Ovalle","5");
 INSERT INTO comunas VALUES("37","Combarbala","5");
 INSERT INTO comunas VALUES("38","Monte Patria","5");
@@ -373,7 +363,7 @@ INSERT INTO comunas VALUES("62","La Calera","6");
 INSERT INTO comunas VALUES("63","Nogales","6");
 INSERT INTO comunas VALUES("64","Hijuelas","6");
 INSERT INTO comunas VALUES("65","Valparaiso","6");
-INSERT INTO comunas VALUES("66","Vi?a del Mar","6");
+INSERT INTO comunas VALUES("66","Viña del Mar","6");
 INSERT INTO comunas VALUES("67","Concon","6");
 INSERT INTO comunas VALUES("68","Quintero","6");
 INSERT INTO comunas VALUES("69","Puchuncavi","6");
@@ -404,9 +394,9 @@ INSERT INTO comunas VALUES("93","Quinta Normal","7");
 INSERT INTO comunas VALUES("94","Quilicura","7");
 INSERT INTO comunas VALUES("95","Pudahuel","7");
 INSERT INTO comunas VALUES("96","Providencia","7");
-INSERT INTO comunas VALUES("97","Pe?alolen","7");
+INSERT INTO comunas VALUES("97","Peñalolen","7");
 INSERT INTO comunas VALUES("98","Pedro Aguirre Cerda","7");
-INSERT INTO comunas VALUES("99","?u?oa","7");
+INSERT INTO comunas VALUES("99","Ñuñoa","7");
 INSERT INTO comunas VALUES("100","Maipu","7");
 INSERT INTO comunas VALUES("101","Macul","7");
 INSERT INTO comunas VALUES("102","Lo Prado","7");
@@ -440,12 +430,12 @@ INSERT INTO comunas VALUES("129","San Pedro","7");
 INSERT INTO comunas VALUES("130","Isla de Maipo","7");
 INSERT INTO comunas VALUES("131","El Monte","7");
 INSERT INTO comunas VALUES("132","Padre Hurtado","7");
-INSERT INTO comunas VALUES("133","Pe?aflor","7");
+INSERT INTO comunas VALUES("133","Peñaflor","7");
 INSERT INTO comunas VALUES("134","Talagante","7");
 INSERT INTO comunas VALUES("135","Codegua","8");
 INSERT INTO comunas VALUES("136","Coinco","8");
 INSERT INTO comunas VALUES("137","Coltauco","8");
-INSERT INTO comunas VALUES("138","Do?ihue","8");
+INSERT INTO comunas VALUES("138","Doñihue","8");
 INSERT INTO comunas VALUES("139","Graneros","8");
 INSERT INTO comunas VALUES("140","Las Cabras","8");
 INSERT INTO comunas VALUES("141","Machali","8");
@@ -476,7 +466,7 @@ INSERT INTO comunas VALUES("165","Navidad","8");
 INSERT INTO comunas VALUES("166","Paredones","8");
 INSERT INTO comunas VALUES("167","Pichilemu","8");
 INSERT INTO comunas VALUES("168","Curico","9");
-INSERT INTO comunas VALUES("169","Huala?e","9");
+INSERT INTO comunas VALUES("169","Hualañe","9");
 INSERT INTO comunas VALUES("170","Licanten","9");
 INSERT INTO comunas VALUES("171","Molina","9");
 INSERT INTO comunas VALUES("172","Rauco","9");
@@ -524,7 +514,7 @@ INSERT INTO comunas VALUES("213","Treguaco","10");
 INSERT INTO comunas VALUES("214","San Carlos","10");
 INSERT INTO comunas VALUES("215","Coihueco","10");
 INSERT INTO comunas VALUES("216","San Nicolas","10");
-INSERT INTO comunas VALUES("217","?iquen","10");
+INSERT INTO comunas VALUES("217","Ñiquen","10");
 INSERT INTO comunas VALUES("218","San Fabian","10");
 INSERT INTO comunas VALUES("219","Alto Biobio","11");
 INSERT INTO comunas VALUES("220","Antuco","11");
@@ -553,7 +543,7 @@ INSERT INTO comunas VALUES("242","Santa Juana","11");
 INSERT INTO comunas VALUES("243","Talcahuano","11");
 INSERT INTO comunas VALUES("244","Tome","11");
 INSERT INTO comunas VALUES("245","Arauco","11");
-INSERT INTO comunas VALUES("246","Ca?ete","11");
+INSERT INTO comunas VALUES("246","Cañete","11");
 INSERT INTO comunas VALUES("247","Contulmo","11");
 INSERT INTO comunas VALUES("248","Curanilahue","11");
 INSERT INTO comunas VALUES("249","Lebu","11");
@@ -638,7 +628,7 @@ INSERT INTO comunas VALUES("328","Coihaique","15");
 INSERT INTO comunas VALUES("329","Aysen","15");
 INSERT INTO comunas VALUES("330","Cisnes","15");
 INSERT INTO comunas VALUES("331","Guaitecas","15");
-INSERT INTO comunas VALUES("332","Rio Iba?ez","15");
+INSERT INTO comunas VALUES("332","Rio Ibañez","15");
 INSERT INTO comunas VALUES("333","Chile Chico","15");
 INSERT INTO comunas VALUES("334","Cochrane","15");
 INSERT INTO comunas VALUES("335","O'Higgins","15");
@@ -950,12 +940,12 @@ INSERT INTO regiones VALUES("6","Valparaiso");
 INSERT INTO regiones VALUES("7","Metropolitana de Santiago");
 INSERT INTO regiones VALUES("8","Libertador General Bernardo O'Higgins");
 INSERT INTO regiones VALUES("9","Maule");
-INSERT INTO regiones VALUES("10","?uble");
+INSERT INTO regiones VALUES("10","Ñuble");
 INSERT INTO regiones VALUES("11","Biobio");
 INSERT INTO regiones VALUES("12","La Araucania");
 INSERT INTO regiones VALUES("13","Los Rios");
 INSERT INTO regiones VALUES("14","Los Lagos");
-INSERT INTO regiones VALUES("15","Aysen del General Carlos Iba?ez del Campo");
+INSERT INTO regiones VALUES("15","Aysen del General Carlos Ibañez del Campo");
 INSERT INTO regiones VALUES("16","Magallanes y de la Antartica Chilena");
 
 INSERT INTO tipo_documento VALUES("33","Factura electronica");

@@ -60,7 +60,7 @@ include 'Includes/partials/menu.php';
                 </div>
             </div>
             <div class="card-body">
-                <p>Funcionalidad en desarrollo: funcion de realizacion de inventario </p>
+                <p>Funcionalidad en desarrollo: funcion de realizacion de inventario selectivo</p>
                 <ul>
                     <li>General</li>
                     <ul>

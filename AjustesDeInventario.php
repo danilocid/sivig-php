@@ -82,10 +82,13 @@ $usuario = new Usuario();
             
               
             </table>
-            <br>
+            <br>       
            
               <div class="float-right">
               <a href="AgregarAjuste" class="btn  btn-lg btn-info"> Agregar ajuste</a>
+                  </div>
+                  <div class="float-right">
+              <a href="AgregarAjuste" class="btn  btn-lg btn-info"> Realizar inventario</a>
                   </div>
             
             
