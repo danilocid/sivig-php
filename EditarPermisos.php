@@ -101,12 +101,8 @@ $User = $_POST["User"];
           }
           echo '<input type="hidden" name="permiso' . $contador . '" value="' . $p['IdPermiso'] . '">';
         } */
-        if ($contador == 0) {
-          $permiso->CreaPermisos($id);
-        } else {
-          # code...
-        }
-        echo '<input type="hidden" name="contador" value="' . $contador . '">';
+
+
         echo '<input type="hidden" name="IdUsuario" value="' . $id . '">';
         ?>
                 <button type="button" class="btn btn-success" data-toggle="modal" data-target="#modal-default">

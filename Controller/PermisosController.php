@@ -80,41 +80,23 @@ class Permiso extends DB
 
     public function ModificaPermisos($IdUsuario, $datos)
     {
-        //echo $IdUsuario;
-        //print_r($datos);
+        unset($datos['IdUsuario']);
+        try {
+            $query = $this->connect()->prepare('DELETE FROM permisos WHERE IdUsuario = :IdUsuario; ');
+            $query->execute(['IdUsuario' => $IdUsuario]);
+        } catch (PDOException $th) {
+            echo "Error en la consulta" . $th->getMessage();
+        }
         foreach ($datos as $d) {
             try {
-                $query = $this->connect()->prepare('UPDATE permisos SET Permiso = :Permiso WHERE IdPermiso = :IdPermiso AND IdUsuario = :IdUsuario; ');
-                $query->execute(['Permiso' => $d->Permiso, 'IdPermiso' => $d->IdPermiso, 'IdUsuario' => $IdUsuario]);
+                $query = $this->connect()->prepare('INSERT INTO permisos (IdPermiso, IdUsuario, IdPagina, Permiso) VALUES (NULL, :IdUsuario, :IdPagina, 1)');
+                $query->execute(['IdPagina' => $d, 'IdUsuario' => $IdUsuario]);
             } catch (PDOException $e) {
                 print_r('Error conenection: ' . $e->getMessage());
             }
         }
-        /*echo '<script type="text/javascript">
-        window.location="Usuarios?m=3";
-      </script>';/**/
-    }
-
-    public function CreaPermisos($IdUsuario)
-    {
-        $query = $this->connect()->prepare('SELECT IdPagina FROM paginas');
-        $query->execute();
-        $arraypaginas = array();
-
-        foreach ($query as $p) {
-            $paginas = new Permisos();
-            $paginas->IdPagina = $p[0];
-
-
-            array_push($arraypaginas, $p);
-        }
-
-        foreach ($arraypaginas as $p) {
-            $query = $this->connect()->prepare('INSERT INTO permisos VALUES (null, :IdUsuario, :IdPagina, 0);');
-            $query->execute(['IdUsuario' => $IdUsuario, 'IdPagina' => $p[0]]);
-        }
         echo '<script type="text/javascript">
-                    window.location="Usuarios";
-                  </script>';
+        window.location="Usuarios?m=3";
+      </script>';
     }
 }
