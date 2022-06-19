@@ -17,7 +17,7 @@ $User = $_POST["User"];
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1>Administracion</h1>
+                    <h1>Pemisos de usuario</h1>
                 </div>
 
             </div>
@@ -51,12 +51,10 @@ $User = $_POST["User"];
         $permisos = $permiso->GetPermisosUsuario($id);
         $paginas = $permiso->GetPaginas();
         $grupos = $permiso->GetGruposPaginas();
-        print_r($paginas);
-        $contador = 0;
+       
         //print_r($permisos);
         echo '<form role="form" action="ModificarPermisos.php" method="POST">';
         foreach ($grupos as $g) {
-          $contador++;
           echo '<div class="form-group">';
           echo '<p><strong>' . $g->NombreGrupo . '</strong></p>';
           foreach ($paginas as $p) {
@@ -75,34 +73,6 @@ $User = $_POST["User"];
           }
           echo '</div>';
         }
-
-        /*  foreach ($permisos as $p) {
-
-
-          echo '<div class="form-group">';
-          $contador++;
-          echo '<div class ="form-group col-md-4">';
-          echo '<label>' . $p['NombrePagina'] . '</label>';
-
-          echo '<select id="' . $p['IdPagina'] . '" name="' . $p['IdPagina'] . '" class="form-control ">';
-          if ($p['Permiso'] == 1) {
-
-            echo '<option value=1>Permitido</option>
-                   <option value=0>No permitido</option>
-                                           
-                 </select>
-                 </div>';
-          } else {
-            echo '<option value=1>Permitido</option>
-                   <option value=0 selected>No permitido</option>
-                  
-                 </select>
-                 </div>';
-          }
-          echo '<input type="hidden" name="permiso' . $contador . '" value="' . $p['IdPermiso'] . '">';
-        } */
-
-
         echo '<input type="hidden" name="IdUsuario" value="' . $id . '">';
         ?>
                 <button type="button" class="btn btn-success" data-toggle="modal" data-target="#modal-default">
