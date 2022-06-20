@@ -17,7 +17,7 @@ class Articulos extends DB
     }
     public function GetArticulosSinStock()
     {
-        $query = $this->connect()->prepare('SELECT * FROM articulos WHERE stock != 0');
+        $query = $this->connect()->prepare('SELECT * FROM articulos WHERE stock != 0 order by descripcion');
         $query->execute();
         $arrayarticulos = array();
 
